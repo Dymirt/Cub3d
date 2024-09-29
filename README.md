@@ -2,25 +2,6 @@
 
 This project is a simple 3D game inspired by **Wolfenstein 3D**, created using the C language and the **minilibx** library. The game features basic 3D rendering with raycasting, textures, map parsing, and player movement.
 
-## Features
-
-- Raycasting for rendering 3D environments
-- Basic player movement (forward, backward, strafe left, strafe right)
-- Texture mapping
-- Map parsing
-- In-progress minimap rendering
-
-## Current Structure
-
-### Source Files
-
-- **`src/minimap_imag.c`**: This file handles the minimap rendering.
-- **`src/maneuvers.c`**: All player movements are controlled in this file.
-  
-### Player Movement
-
-The player's movement is fully functional, including walking in all directions. The movements are reconstructed and unified into a single function to manage all actions (in `src/maneuvers.c`).
-
 ## Known Bugs and Issues
 
 ### 1. Minimap Rendering (Segmentation Fault) (BONUS part)
@@ -35,3 +16,22 @@ The player's movement is fully functional, including walking in all directions. 
 
 ### 3. Animated texture
 - **creating algorethm**: to render animated texture -> still in progress 
+
+## Features
+
+- Raycasting for rendering 3D environments
+- Basic player movement (forward, backward, strafe left, strafe right, jump)
+- Texture mapping
+- Map parsing
+- In-progress minimap rendering
+
+## Current Structure
+
+### Source Files
+
+- **`src/minimap_imag.c`**: This file handles the minimap rendering.
+- **`src/maneuvers.c`**: All player movements are controlled in this file.
+  
+### Player Movement
+
+The player's movement is fully functional, including walking in all directions. The movements are reconstructed and unified into a single function to manage all actions (in `src/maneuvers.c`).
