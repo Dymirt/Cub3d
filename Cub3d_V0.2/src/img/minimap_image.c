@@ -39,16 +39,16 @@ static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 {
 	if (minimap->map[y][x] == 'P')
 		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, "color");
+			y * minimap->tile_size, MMAP_COLOR_PLAYER);
 	else if (minimap->map[y][x] == '1')
 		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, "wall color");
+			y * minimap->tile_size, MMAP_COLOR_WALL);
 	else if (minimap->map[y][x] == '0')
 		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, "floor color");
+			y * minimap->tile_size, MMAP_COLOR_FLOOR);
 	else if (minimap->map[y][x] == ' ')
 		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, "space color");
+			y * minimap->tile_size, MMAP_COLOR_SPACE);
 }
 
 

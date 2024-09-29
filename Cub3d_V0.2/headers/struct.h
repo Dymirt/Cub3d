@@ -166,7 +166,8 @@ typedef struct s_data
     t_player    player;
     t_ray       ray;
     t_texinfo  texinfo;
-    t_img   minimap;
+    t_img   	minimap;
+	t_minimap 	mp;
 }	t_data;
 
 
