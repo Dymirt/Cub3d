@@ -112,7 +112,6 @@ typedef struct s_map_information
 
 }   t_map_information;
 
-/*here*/
 typedef struct s_ray
 {
 	double	camera_x;

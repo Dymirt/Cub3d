@@ -5,7 +5,6 @@ typedef enum e_direction {
     Y_DIR
 } t_direction;
 
-// Initialize raycasting information for a specific x-coordinate
 static void init_raycasting_info(int x, t_ray *ray, t_player *player)
 {
     double camera_x;

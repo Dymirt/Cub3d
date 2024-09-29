@@ -14,19 +14,70 @@ static int	check_valid_rgb(int *rgb)
 	return (SUCCESS);
 }
 
-static unsigned long	convert_rgb_to_hex(int *rgb_tab)
+static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
 {
-	unsigned long	result;
-	int				r;
-	int				g;
-	int				b;
+	int		i;
 
-	r = rgb_tab[0];
-	g = rgb_tab[1];
-	b = rgb_tab[2];
-	result = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
-	return (result);
+	i = -1;
+	while (rgb_to_convert[++i])
+	{
+		rgb[i] = ft_atoi(rgb_to_convert[i]);
+		if (rgb[i] == -1 || no_digit(rgb_to_convert[i]) == true)
+		{
+			free_2Darray((void **)rgb_to_convert);
+			free(rgb);
+			return (0);
+		}
+	}
+	free_2Darray((void **)rgb_to_convert);
+	return (rgb);
 }
+
+static int	*set_rgb_colors(char *line)
+{
+	char	**rgb_to_convert;
+	int		*rgb;
+	int		count;
+
+	rgb_to_convert = ft_split(line, ',');
+	count = 0;
+	while (rgb_to_convert[count])
+		count++;
+	if (count != 3)
+	{
+		free_2Darray((void **)rgb_to_convert);
+		return (0);
+	}
+	rgb = malloc(sizeof(int) * 3);
+	if (!rgb)
+	{
+		err_msg(NULL, "Malloc: error", 0);
+		return (0);
+	}
+	return (copy_into_rgb_array(rgb_to_convert, rgb));
+}
+
+int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
+{
+	if (line[j + 1] && ft_isprint(line[j + 1]))
+		return (err_msg(data->map_info.path, "F: C: error", ERR));
+	if (!textures->ceiling && line[j] == 'C')
+	{
+		textures->ceiling = set_rgb_colors(line + j + 1);
+		if (textures->ceiling == 0)
+			return (err_msg(data->map_info.path, "color: C", ERR));
+	}
+	else if (!textures->floor && line[j] == 'F')
+	{
+		textures->floor = set_rgb_colors(line + j + 1);
+		if (textures->floor == 0)
+			return (err_msg(data->map_info.path, "Color: F", ERR));
+	}
+	else
+		return (err_msg(data->map_info.path, "F: C: error", ERR));
+	return (SUCCESS);
+}
+
 
 int	check_textures_validity(t_data *data, t_texinfo *textures)
 {

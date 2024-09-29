@@ -70,7 +70,7 @@ void	handle_jump(t_data *data);
 void	clean_exit(t_data *data, int code);
 int		quit_cub3d(t_data *data);
 void	free_2Darray(void **AD);
-int		free_data(t_data *data);
+int	    all_free(t_data *data);
 
 /* error.c */
 int		err_msg(char *detail, char *str, int code);

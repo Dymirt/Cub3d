@@ -28,6 +28,7 @@ int		ft_isspace(int c);
 int		ft_ishexdigit(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+unsigned long	convert_rgb_to_hex(int *rgb_tab);
 
 
 size_t	ft_strlen(const char *str);
@@ -67,7 +68,7 @@ int		is_a_white_space(char c);
 
 
 char	*get_next_line(int fd);
-
+bool	no_digit(char *str);
 char	*f_strchr(char *s, int c);
 char	*f_strdup(char *s1);
 char	*f_strjoin(char *s1, char *s2);

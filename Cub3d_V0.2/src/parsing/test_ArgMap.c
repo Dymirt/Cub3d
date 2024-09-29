@@ -17,6 +17,41 @@ static int	check_top_or_bottom(char **map_tab, int i, int j)
 	return (SUCCESS);
 }
 
+static bool xpm_cub_check(char *arg, bool is_cub)
+{
+	size_t	len;
+	int		fd;
+	
+	len = ft_strlen(arg);
+	fd = open(arg, O_DIRECTORY);
+	if (fd >= 0)
+	{
+		close (fd);
+		return false;
+	}
+	if (is_cub && (len > 4 && arg[len - 4] == '.' && arg[len - 3] == 'c' && arg[len - 2] == 'u' && arg[len - 1] == 'b'))
+	{
+    	return true;
+	}
+    if (!is_cub && (len > 4 && arg[len - 4] == '.' && arg[len - 3] == 'x' && arg[len - 2] == 'p' && arg[len - 1] == 'm'))
+	{
+        return true;
+	}
+	return (false);
+}
+
+int	check_file(char *arg, bool is_cub)
+{
+	int	fd;
+	fd = open(arg, O_RDONLY);
+	if (!xpm_cub_check(arg, is_cub))
+        return err_msg(arg, is_cub ? ".cub: error" : ".xpm: error", FAILURE);
+    if (fd == -1)
+        return err_msg(arg, strerror(errno), FAILURE);
+    close(fd);
+    return SUCCESS;
+}
+
 int	check_map_sides(t_map_information *map, char **map_tab)
 {
 	int	i;
@@ -51,3 +86,4 @@ size_t	find_biggest_len(t_map_information *map, int i)
 	}
 	return (biggest_len);
 }
+

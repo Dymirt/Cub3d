@@ -36,6 +36,8 @@ SRC = ft_isalpha \
 	ft_strmapi \
 	ft_striteri \
 	ft_putchar_fd \
+	no_digit \
+	ft_chang_hex \
 	ft_putstr_fd \
 	ft_putendl_fd \
 	ft_putnbr_fd \

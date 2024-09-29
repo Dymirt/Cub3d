@@ -33,7 +33,7 @@ static void	free_texinfo(t_texinfo *textures)
 		free(textures->ceiling);
 }
 
-static void	free_map(t_data *data)
+int	all_free(t_data *data)
 {
 	if (data->map_info.fd > 0)
 		close(data->map_info.fd);
@@ -41,15 +41,10 @@ static void	free_map(t_data *data)
 		free_2Darray((void **)data->map_info.file);
 	if (data->map)
 		free_2Darray((void **)data->map);
-}
-
-int	free_data(t_data *data)
-{
 	if (data->tex)
 		free_2Darray((void **)data->tex);
 	if (data->tex_pixels)
 		free_2Darray((void **)data->tex_pixels);
 	free_texinfo(&data->texinfo);
-	free_map(data);
 	return (FAILURE);
 }

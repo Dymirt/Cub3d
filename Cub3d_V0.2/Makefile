@@ -21,10 +21,8 @@ SRC		= 	main.c \
 			parsing/start_game.c \
 			parsing/test_Data.c \
 			parsing/test_TEX.c \
-			parsing/test_ARG.c \
+			parsing/test_ArgMap.c \
 			parsing/test_MAP.c \
-			parsing/test_MAP2.c \
-			parsing/test_COLOR.c \
 			moves/keypad.c \
 			moves/player_dir.c \
 			moves/player_pos.c \

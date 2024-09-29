@@ -12,7 +12,7 @@ void	clean_exit(t_data *data, int code)
 		mlx_loop_end(data->mlx);
 		free(data->mlx);
 	}
-	free_data(data);
+	all_free(data);
 	exit(code);
 }
 
@@ -49,11 +49,11 @@ int	parse_args(t_data *data, char **av)
 		clean_exit(data, FAILURE);
 	parse_data(av[1], data);
 	if (get_file_data(data, data->map_info.file) == FAILURE)
-		return (free_data(data));
+		return (all_free(data));
 	if (check_map_validity(data, data->map) == FAILURE)
-		return (free_data(data));
+		return (all_free(data));
 	if (check_textures_validity(data, &data->texinfo) == FAILURE)
-		return (free_data(data));
+		return (all_free(data));
 	init_player_direction(data);
 	if (DEBUG_MSG)
 		debug_display_data(data);
