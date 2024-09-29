@@ -1,5 +1,7 @@
 #include "cub3d.h"
 
+/*https://en.wikipedia.org/wiki/Mini-map*/
+
 /*Important: Key function: READ*/
 static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int x, int y, int color)
 {
