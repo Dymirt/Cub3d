@@ -26,25 +26,16 @@ int	rotate_player(t_data *data, double rotdir)
 	return (moved);
 }
 
+
 // Single function to handle all movement and rotation and jump (jump still need fixation)
 int	move_player(t_data *data)
 {
 	double new_x;
 	double new_y;
+	//double new_z; /*z axis to handle jumb*/
 	int moved = 0;
 
-	// Handle Jumping
-	if (data->player.is_jumping)
-	{
-		data->player.z += data->player.z_vel;
-		data->player.z_vel += GRAVITY;
-		if (data->player.z <= 0) // Stop jumping when back on the ground
-		{
-			data->player.z = 0;
-			data->player.is_jumping = 0;
-			data->player.z_vel = 0;
-		}
-	}
+	/*jumping movement*/
 	if (data->player.move_y != 0)
 	{
 		new_x = data->player.pos_x + data->player.dir_x * data->player.move_y * MOVESPEED;
@@ -61,15 +52,6 @@ int	move_player(t_data *data)
 		moved += rotate_player(data, data->player.rotate);
 
 	return moved;
-}
-
-void	handle_jump(t_data *data)
-{
-	if (!data->player.is_jumping && data->player.z == 0)
-	{
-		data->player.is_jumping = 1;
-		data->player.z_vel = JUMP_SPEED;  // Initial jump velocity
-	}
 }
 
 
