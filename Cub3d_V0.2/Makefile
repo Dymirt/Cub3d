@@ -68,7 +68,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 # Project file rule
 $(NAME): $(OBJS)
 	@echo -n "Building $(NAME)... "
-	$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) 
+	$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
 	@echo "done!"
 
 # Libft rule
