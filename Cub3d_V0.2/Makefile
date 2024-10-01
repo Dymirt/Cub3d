@@ -1,5 +1,5 @@
 # Program file name
-NAME	= CUB3d
+NAME	= cub3D
 
 # Compiler and compilation flags
 CC		= gcc
