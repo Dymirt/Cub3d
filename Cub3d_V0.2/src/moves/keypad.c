@@ -12,11 +12,11 @@ static int	key_press_handler(int key, t_data *data)
 		data->player.rotate += 1;
 	if (key == XK_w)
 		data->player.move_y = 1;
-	if (key == XK_a)
+	if (key == XK_d)
 		data->player.move_x = -1;
 	if (key == XK_s)
 		data->player.move_y = -1;
-	if (key == XK_d)
+	if (key == XK_a)
 		data->player.move_x = 1;
 	if (key == XK_space)
 		handle_jump(data); 
