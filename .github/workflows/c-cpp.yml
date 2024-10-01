@@ -11,20 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
     - name: make
       run: make
+      working-directory: Cub3d_V0.2
 
   norminette:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
     - name: Install Norminette
       run: pip install norminette
     - name: Norminette
-      run: norminette Cube3D_V0.2/headers Cube3D_V0.2/src
+      run: norminette Cub3d_V0.2/headers Cub3d_V0.2/src
 
       
