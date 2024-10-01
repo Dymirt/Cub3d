@@ -29,5 +29,3 @@ jobs:
       run: pip install norminette
     - name: Norminette
       run: norminette Cub3d_V0.2/headers Cub3d_V0.2/src
-
-      
