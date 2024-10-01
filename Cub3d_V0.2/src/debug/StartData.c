@@ -53,7 +53,6 @@ void Rstart(t_ray *ray)
     ray->draw_end = 0;
 }
 
-
 void Dstart(t_data *data)
 {
 	data->mlx = NULL;

@@ -25,7 +25,6 @@ SRC		= 	main.c \
 			parsing/test_MAP.c \
 			moves/keypad.c \
 			moves/dist_player.c \
-			moves/location_player.c \
 			moves/maneuvers.c \
 			img/camera.c \
 			img/render.c \
