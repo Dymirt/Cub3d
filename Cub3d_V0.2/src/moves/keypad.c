@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keypad.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 01:53:10 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 01:54:27 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -36,9 +46,9 @@ static int	key_release_handler(int key, t_data *data)
 	return (0);
 }
 
-static bool validate_next_move(t_data *data, double x, double y)
+static bool	validate_next_move(t_data *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0')//zero so means free sapce (valid move)
+	if (data->map[(int)y][(int)x] == '0') //zero so means free sapce (valid move)
 		return (true);
 	if (x < 0.25 || x >= data->map_info.width - 1.25)
 		return (false);
