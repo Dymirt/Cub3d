@@ -28,8 +28,6 @@ static int	key_press_handler(int key, t_data *data)
 		data->player.move_y = -1;
 	if (key == XK_a)
 		data->player.move_x = 1;
-	//if (key == XK_space)
-		//handle_jump(data); 
 	return (0);
 }
 
@@ -48,7 +46,7 @@ static int	key_release_handler(int key, t_data *data)
 
 static bool	validate_next_move(t_data *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0') //zero so means free sapce (valid move)
+	if (data->map[(int)y][(int)x] == '0')
 		return (true);
 	if (x < 0.25 || x >= data->map_info.width - 1.25)
 		return (false);

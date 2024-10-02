@@ -87,7 +87,7 @@ void	init_textures_img(t_data *data, t_img *image, char *path)
 {
 	init_img_clean(image);
 	image->img = mlx_xpm_file_to_image(data->mlx, path, &data->texinfo.size,
-			&data->texinfo.size;
+			&data->texinfo.size);
 	if (image->img == NULL)
 		clean_exit(data, err_msg("mlx", "MLX: image", 1));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,

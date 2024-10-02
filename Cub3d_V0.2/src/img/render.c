@@ -36,7 +36,7 @@ static void	render_frame(t_data *data)
 void	render_images(t_data *data)
 {
 	init_texture_pixels(data);
-	Rstart(&data->ray);
+	r_start(&data->ray);
 	raycasting(&data->player, data);
 	render_frame(data);
 }

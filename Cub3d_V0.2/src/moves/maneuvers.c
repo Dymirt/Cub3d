@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   maneuvers.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maabdela <dkolida@student.42warsaw.pl>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
+/*   Updated: 2024/10/02 01:54:27 by maabdela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "cub3d.h"
 
 static int	rotate_left_right(t_data *data, double rotspeed)
@@ -26,33 +37,30 @@ int	rotate_player(t_data *data, double rotdir)
 	return (moved);
 }
 
-
-// Single function to handle all movement and rotation and jump (jump still need fixation)
 int	move_player(t_data *data)
 {
-	double new_x;
-	double new_y;
-	//double new_z; /*z axis to handle jumb*/
-	int moved = 0;
+	double	new_x;
+	double	new_y;
+	int		moved;
 
-	/*jumping movement*/
+	moved = 0;
 	if (data->player.move_y != 0)
 	{
-		new_x = data->player.pos_x + data->player.dir_x * data->player.move_y * MOVESPEED;
-		new_y = data->player.pos_y + data->player.dir_y * data->player.move_y * MOVESPEED;
+		new_x = data->player.pos_x + data->player.dir_x
+			* data->player.move_y * MOVESPEED;
+		new_y = data->player.pos_y + data->player.dir_y
+			* data->player.move_y * MOVESPEED;
 		moved += validate_move(data, new_x, new_y);
 	}
 	if (data->player.move_x != 0)
 	{
-		new_x = data->player.pos_x + data->player.dir_y * data->player.move_x * MOVESPEED;
-		new_y = data->player.pos_y - data->player.dir_x * data->player.move_x * MOVESPEED;
+		new_x = data->player.pos_x + data->player.dir_y
+			* data->player.move_x * MOVESPEED;
+		new_y = data->player.pos_y - data->player.dir_x
+			* data->player.move_x * MOVESPEED;
 		moved += validate_move(data, new_x, new_y);
 	}
 	if (data->player.rotate != 0)
 		moved += rotate_player(data, data->player.rotate);
-
-	return moved;
+	return (moved);
 }
-
-
-

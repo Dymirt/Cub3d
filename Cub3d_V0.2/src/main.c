@@ -84,7 +84,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (err_msg("Usage", ERR_USAGE, 1));
-	Dstart(&data);
+	d_start(&data);
 	if (parse_args(&data, av) != 0)
 		return (1);
 	start_MLXTEX(&data);
