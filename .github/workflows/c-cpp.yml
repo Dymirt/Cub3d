@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
+    - name: Install mlx dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y -qq gcc make xorg libxext-dev libbsd-dev libx11-dev
+    - name: make
+      run: make
+      working-directory: Cub3d_V0.2
+
+  norminette:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Norminette
+      run: pip install norminette
+    - name: Norminette
+      run: norminette Cub3d_V0.2/headers Cub3d_V0.2/src
