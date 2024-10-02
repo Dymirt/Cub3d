@@ -3,9 +3,9 @@
 /*                                                        :::      ::::::::   */
 /*   maneuvers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: maabdela <dkolida@student.42warsaw.pl>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 22:32:25 by dkolida           #+#    #+#             */
+/*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
 /*   Updated: 2024/10/02 22:33:13 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -38,8 +38,6 @@ int	rotate_player(t_data *data, double rotdir)
 	return (moved);
 }
 
-// Single function to handle all movement and
-// rotation and jump (jump still need fixation)
 int	move_player(t_data *data)
 {
 	double	new_x;
