@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 22:35:24 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 22:35:59 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
@@ -44,9 +56,6 @@ void	render_images(t_data *data)
 int	render(t_data *data)
 {
 	data->player.has_moved += move_player(data);
-	if (data->player.has_moved == 0)
-		return (0);
 	render_images(data);
-
 	return (0);
 }
