@@ -46,13 +46,13 @@ static int	key_release_handler(int key, t_data *data)
 
 static bool	validate_next_move(t_data *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0')
-		return (true);
-	if (x < 0.25 || x >= data->map_info.width - 1.25)
-		return (false);
-	if (y < 0.25 || y >= data->map_info.height - 0.25)
-		return (false);
-	return (true);
+    if (x < 0 || x >= data->map_info.width || y < 0 || y >= data->map_info.height)
+        return (false);
+    if (data->map[(int)y][(int)x] == '1') // Wall detected, disallow movement
+        return (false);
+    if (data->map[(int)y][(int)x] == '0')
+        return (true);
+    return (false);
 }
 
 void	listen_for_input(t_data *data)
