@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keypad.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 01:53:10 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 01:54:27 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -12,11 +22,11 @@ static int	key_press_handler(int key, t_data *data)
 		data->player.rotate += 1;
 	if (key == XK_w)
 		data->player.move_y = 1;
-	if (key == XK_a)
+	if (key == XK_d)
 		data->player.move_x = -1;
 	if (key == XK_s)
 		data->player.move_y = -1;
-	if (key == XK_d)
+	if (key == XK_a)
 		data->player.move_x = 1;
 	//if (key == XK_space)
 		//handle_jump(data); 
@@ -27,25 +37,18 @@ static int	key_release_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		quit_cub3d(data);
-	if (key == XK_w && data->player.move_y == 1)
+	if (key == XK_a || key == XK_d)
+		data->player.move_x = 0;
+	if (key == XK_w || key == XK_s)
 		data->player.move_y = 0;
-	if (key == XK_s && data->player.move_y == -1)
-		data->player.move_y = 0;
-	if (key == XK_a && data->player.move_x == -1)
-		data->player.move_x += 1;
-	if (key == XK_d && data->player.move_x == 1)
-		data->player.move_x -= 1;
-	if (key == XK_Left)
+	if (key == XK_Left || key == XK_Right)
 		data->player.rotate = 0;
-	if (key == XK_Right)
-		data->player.rotate = 0;
-	
 	return (0);
 }
 
-static bool validate_next_move(t_data *data, double x, double y)
+static bool	validate_next_move(t_data *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0')//zero so means free sapce (valid move)
+	if (data->map[(int)y][(int)x] == '0') //zero so means free sapce (valid move)
 		return (true);
 	if (x < 0.25 || x >= data->map_info.width - 1.25)
 		return (false);
@@ -76,5 +79,7 @@ int	validate_move(t_data *data, double new_x, double new_y)
 		data->player.pos_y = new_y;
 		moved = 1;
 	}
+	printf("x: %f, y: %f\n", data->player.pos_x, data->player.pos_y);
+	printf(GREEN "moved: %d\n" RESET, moved);
 	return (moved);
 }
