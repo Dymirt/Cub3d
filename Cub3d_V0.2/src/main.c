@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:16:41 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 23:16:59 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	get_number_of_lines(char *path)
@@ -84,7 +96,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (err_msg("Usage", ERR_USAGE, 1));
-	Dstart(&data);
+	data_init(&data);
 	if (parse_args(&data, av) != 0)
 		return (1);
 	start_MLXTEX(&data);

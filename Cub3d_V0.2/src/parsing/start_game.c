@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_game.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:25:15 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 23:25:38 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	count_map_lines(t_data *data, char **file, int i)
@@ -37,7 +49,7 @@ static int	fill_map_tab(t_map_information *map_info, char **map_tab, int index)
 		{
 			map_tab[i][j] = map_info->file[index][j];
 			j++;
-		}	
+		}
 		while (j < map_info->width)
 			map_tab[i][j++] = '\0';
 		i++;

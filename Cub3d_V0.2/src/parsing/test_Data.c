@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_Data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:26:50 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/02 23:27:16 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static char	*get_texture_path(char *line, int j)
@@ -57,13 +69,13 @@ static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
 			if (fill_direction_textures(&data->texinfo, map[i], j) == ERR)
 				return (err_msg(data->map_info.path, "Tex: invaled", FAILURE));
 			return (BREAK);
-		}	
+		}
 		else
 		{
 			if (fill_color_textures(data, &data->texinfo, map[i], j) == ERR)
 				return (FAILURE);
 			return (BREAK);
-		}	
+		}
 	}
 	else if (ft_isdigit(map[i][j]))
 	{

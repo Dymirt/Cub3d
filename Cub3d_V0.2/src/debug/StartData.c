@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:37:58 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 22:42:39 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/02 23:18:24 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_img_clean(t_img *img)
 	img->end = 0;
 }
 
-void	Rstart(t_ray *ray)
+void	ray_init(t_ray *ray)
 {
 	ray->camera_x = 0;
 	ray->dir_x = 0;
@@ -65,7 +65,7 @@ void	Rstart(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-void	Dstart(t_data *data)
+void	data_init(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;

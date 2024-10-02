@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:14:18 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/02 23:18:36 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define YELLOW	"\e[33m"
 
 /* init directory*/
-void 	Dstart(t_data *data);
-void 	Rstart(t_ray *ray);
+void 	data_init(t_data *data);
+void 	ray_init(t_ray *ray);
 void	init_img_clean(t_img *img);
 void 	start_MLXTEX(t_data *data);
 void	init_img(t_data *data, t_img *image, int width, int height);

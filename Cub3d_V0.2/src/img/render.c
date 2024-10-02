@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:35:24 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 22:35:59 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/02 23:17:58 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	render_frame(t_data *data)
 void	render_images(t_data *data)
 {
 	init_texture_pixels(data);
-	Rstart(&data->ray);
+	ray_init(&data->ray);
 	raycasting(&data->player, data);
 	render_frame(data);
 }
