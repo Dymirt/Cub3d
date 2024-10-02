@@ -14,13 +14,13 @@
 static int	*xpm_to_img(t_data *data, char *path)
 {
 	t_img	tmp;
-	int	*buffer;
-	int	x;
-	int	y;
-	
+	int		*buff;
+	int		x;
+	int		y;
+
 	init_textures_img(data, &tmp, path);
-	buffer = ft_calloc(1, sizeof * buffer * data->texinfo.size * data->texinfo.size);
-	if (!buffer)
+	buff = ft_calloc(1, sizeof(int) * data->texinfo.size * data->texinfo.size);
+	if (!buff)
 		clean_exit(data, err_msg(NULL, "Malloc: error", 1));
 	y = 0;
 	while (y < data->texinfo.size)
@@ -28,16 +28,17 @@ static int	*xpm_to_img(t_data *data, char *path)
 		x = 0;
 		while (x < data->texinfo.size)
 		{
-			buffer[y * data->texinfo.size + x] = tmp.addr[y * data->texinfo.size + x];
+			buff[y * data->texinfo.size + x]
+				= tmp.addr[y * data->texinfo.size + x];
 			++x;
 		}
 		y++;
 	}
 	mlx_destroy_image(data->mlx, tmp.img);
-	return (buffer);
+	return (buff);
 }
 
-void	start_MLXTEX(t_data *data)
+void	start_mlxtex(t_data *data)
 {
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
@@ -56,7 +57,7 @@ void	start_MLXTEX(t_data *data)
 }
 
 void	init_texinfo(t_texinfo *textures)
-{	
+{
 	textures->north = NULL;
 	textures->south = NULL;
 	textures->west = NULL;
