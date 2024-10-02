@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:44:35 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 01:17:32 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ static int	*set_rgb_colors(char *line)
 	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 
-int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
+int	fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j)
 {
 	if (line[j + 1] && ft_isprint(line[j + 1]))
 		return (err_msg(data->map_info.path, "F: C: error", ERR));
-	if (!textures->ceiling && line[j] == 'C')
+	if (!tex->ceiling && line[j] == 'C')
 	{
-		textures->ceiling = set_rgb_colors(line + j + 1);
-		if (textures->ceiling == 0)
+		tex->ceiling = set_rgb_colors(line + j + 1);
+		if (tex->ceiling == 0)
 			return (err_msg(data->map_info.path, "color: C", ERR));
 	}
-	else if (!textures->floor && line[j] == 'F')
+	else if (!tex->floor && line[j] == 'F')
 	{
-		textures->floor = set_rgb_colors(line + j + 1);
-		if (textures->floor == 0)
+		tex->floor = set_rgb_colors(line + j + 1);
+		if (tex->floor == 0)
 			return (err_msg(data->map_info.path, "Color: F", ERR));
 	}
 	else

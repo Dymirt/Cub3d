@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:26:50 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:27:16 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 01:18:23 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
 		}
 		else
 		{
-			if (fill_color_textures(data, &data->texinfo, map[i], j) == ERR)
+			if (fill_color_tex(data, &data->texinfo, map[i], j) == ERR)
 				return (FAILURE);
 			return (BREAK);
 		}
