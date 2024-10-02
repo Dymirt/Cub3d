@@ -1,5 +1,5 @@
 # Program file name
-NAME	= CUB3d
+NAME	= cub3D
 
 # Compiler and compilation flags
 CC		= gcc
@@ -49,14 +49,6 @@ INC			=	-I ./headers/ \
 				-I ./libft/ \
 				-I ./minilibx-linux/
 
-# Loading bar function
-loading_bar:
-	@printf "Loading: ["
-	@for i in $$(seq 1 50); do \
-		printf "\033[0;32m=\033[0m"; \
-		sleep 0.05; \
-	done; \
-	printf "] Done!\n"
 
 # Main rule
 all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
@@ -76,8 +68,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 # Project file rule
 $(NAME): $(OBJS)
 	@echo -n "Building $(NAME)... "
-	@$(MAKE) loading_bar
-	@$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
+	$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
 	@echo "done!"
 
 # Libft rule

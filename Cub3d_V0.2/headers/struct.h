@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/01 23:53:52 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
 /*MACROS*/
 
@@ -10,7 +22,6 @@
 # ifndef MMAP_DEBUG_MSG
 #  define MMAP_DEBUG_MSG 0
 # endif
-
 
 /* # define WIN_WIDTH 960 */
 /* # define WIN_HEIGHT 720 */
@@ -72,20 +83,20 @@ typedef struct s_img
 
 typedef struct s_texinfo
 {
-	char    *north;
-    char    *south;
-    char    *west;
-    char    *east;
-    int     *floor;
-    int     *ceiling;
-    int     x;//x_axis
-    int     y;//y_axis
-    int     i;//index
-    int     size;
-    unsigned long   hex_floor;
-    unsigned long   hex_ceiling;
-    double  step;
-    double  position;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				*floor;
+	int				*ceiling;
+	int				x;//x_axis
+	int				y;//y_axis
+	int				i;//index
+	int				size;
+	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
+	double			step;
+	double			position;
 }	t_texinfo;
 
 typedef struct s_minimap
@@ -101,16 +112,16 @@ typedef struct s_minimap
 
 typedef struct s_map_information
 {
-    int fd;
-    int line_count;
-    int height;
-    int width;
-    int i_end_of_map;
-	t_img *img;
-    char    *path;
-    char    **file;
+	int		fd;
+	int		line_count;
+	int		height;
+	int		width;
+	int		i_end_of_map;
+	t_img	*img;
+	char	*path;
+	char	**file;
 
-}   t_map_information;
+}	t_map_information;
 
 typedef struct s_ray
 {
@@ -138,38 +149,36 @@ typedef struct s_player
 	char	dir;
 	double	pos_x;
 	double	pos_y;
-	double 	pos_z;
+	double	pos_z;
 	double	dir_x;
 	double	dir_y;
-	double 	dir_z;
+	double	dir_z;
 	double	plane_x;
 	double	plane_y;
-	double 	plane_z;
+	double	plane_z;
 	int		move_x;
 	int		move_y;
-	int 	move_z;
+	int		move_z;
 	int		rotate;
-	int    	is_jumping;
+	int		is_jumping;
 	int		has_moved;
 }	t_player;
 
 typedef struct s_data
 {
-	void    *mlx;
-    void    *win;
-    int     win_h;
-    int     win_w;
-    int     **tex_pixels;
-    int     **tex;
-    t_map_information   map_info;
-    char    **map;
-
-    t_player    player;
-    t_ray       ray;
-    t_texinfo  texinfo;
-    t_img   	minimap;
-	t_minimap 	mp;
+	void				*mlx;
+	void				*win;
+	int					win_h;
+	int					win_w;
+	int					**tex_pixels;
+	int					**tex;
+	t_map_information	map_info;
+	char				**map;
+	t_player			player;
+	t_ray				ray;
+	t_texinfo			texinfo;
+	t_img				minimap;
+	t_minimap			mp;
 }	t_data;
-
 
 #endif
