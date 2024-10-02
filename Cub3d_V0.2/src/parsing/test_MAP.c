@@ -41,8 +41,24 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 		|| is_a_white_space(map_tab[i][j - 1]) == SUCCESS
 		|| is_a_white_space(map_tab[i][j + 1]) == SUCCESS
 		|| is_a_white_space(map_tab[i - 1][j]) == SUCCESS
-		|| is_a_white_space(map_tab[i + 1][j]) == SUCCESS)
+		|| is_a_white_space(map_tab[i + 1][j]) == SUCCESS
+		|| map_tab[i - 1][j] == '1' // Check upward
+		|| map_tab[i + 1][j] == '1' // Check downward
+		|| map_tab[i][j - 1] == '1' // Check left
+		|| map_tab[i][j + 1] == '1') // Check right)
 		return (FAILURE);
+	printf("Player position: (%d, %d)\n", i, j);
+    printf("Surroundings: [%c, %c, %c, %c]\n",
+        map_tab[i - 1][j],  // Up
+        map_tab[i + 1][j],  // Down
+        map_tab[i][j - 1],  // Left
+        map_tab[i][j + 1]); // Right
+
+    if (i <= 0 || i >= (data->map_info.height - 1) || j <= 0 || j >= (int)ft_strlen(map_tab[i]) - 1)
+        return (FAILURE);
+
+    if (map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1' || map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1'){
+        return (FAILURE);}
 	return (SUCCESS);
 }
 

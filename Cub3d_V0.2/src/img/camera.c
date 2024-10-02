@@ -9,7 +9,7 @@ static void init_raycasting_info(int x, t_ray *ray, t_player *player)
 {
     double camera_x;
 
-    Rstart(ray);
+    r_start(ray);
     set_default_ray_info(ray);
     camera_x = calculate_camera_x(x);
     calculate_ray_direction(ray, player, camera_x);

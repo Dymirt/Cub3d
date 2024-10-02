@@ -9,6 +9,7 @@ CFLAGS	= -Werror -Wextra -Wall -g3 #-fsanitize=address
 MLX_PATH	= minilibx-linux/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
+MLX_REPO 	= https://github.com/42Paris/minilibx-linux.git
 
 # Libft
 LIBFT_PATH	= libft/
@@ -77,6 +78,12 @@ $(LIBFT):
 
 # MLX rule
 $(MLX):
+	@if [ ! -d "$(MLX_PATH)" ]; then \
+		echo "Cloning minilibx-linux....."; \
+		git clone $(MLX_REPO); \
+	else \
+		echo "Directory minilibx-linux already exsits, skip cloning"; \
+	fi 
 	@$(MAKE) -s --no-print-directory -C $(MLX_PATH)
 
 # Clean up build files rule
