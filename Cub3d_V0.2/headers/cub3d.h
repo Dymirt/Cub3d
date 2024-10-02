@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:18:36 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:23:33 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 void 	data_init(t_data *data);
 void 	ray_init(t_ray *ray);
 void	init_img_clean(t_img *img);
-void 	start_MLXTEX(t_data *data);
+void 	start_mlxtex(t_data *data);
 void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_textures_img(t_data *data, t_img *image, char *path);
 void	init_texinfo(t_texinfo *textures);
@@ -80,7 +80,7 @@ int		rotate_player(t_data *data, double rotdir);
 /* exit directory*/
 void	clean_exit(t_data *data, int code);
 int		quit_cub3d(t_data *data);
-void	free_2Darray(void **AD);
+void	free_2d_array(void **AD);
 int		all_free(t_data *data);
 
 /* error.c */

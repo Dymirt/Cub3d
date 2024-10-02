@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:20:17 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:21:34 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:09:45 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_texture_pixels(t_data *data)
 	int	i;
 
 	if (data->tex_pixels)
-		free_2Darray((void **)data->tex_pixels);
+		free_2d_array((void **)data->tex_pixels);
 	data->tex_pixels = ft_calloc(data->win_h + 1,
 			sizeof * data->tex_pixels);
 	if (!data->tex_pixels)

@@ -24,12 +24,12 @@ static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
 		rgb[i] = ft_atoi(rgb_to_convert[i]);
 		if (rgb[i] == -1 || no_digit(rgb_to_convert[i]) == true)
 		{
-			free_2Darray((void **)rgb_to_convert);
+			free_2d_array((void **)rgb_to_convert);
 			free(rgb);
 			return (0);
 		}
 	}
-	free_2Darray((void **)rgb_to_convert);
+	free_2d_array((void **)rgb_to_convert);
 	return (rgb);
 }
 
@@ -45,7 +45,7 @@ static int	*set_rgb_colors(char *line)
 		count++;
 	if (count != 3)
 	{
-		free_2Darray((void **)rgb_to_convert);
+		free_2d_array((void **)rgb_to_convert);
 		return (0);
 	}
 	rgb = malloc(sizeof(int) * 3);
