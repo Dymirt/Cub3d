@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 01:54:27 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:43:03 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ static int	key_release_handler(int key, t_data *data)
 
 static bool	validate_next_move(t_data *data, double x, double y)
 {
-    if (x < 0 || x >= data->map_info.width || y < 0 || y >= data->map_info.height)
-        return (false);
-    if (data->map[(int)y][(int)x] == '1') // Wall detected, disallow movement
-        return (false);
-    if (data->map[(int)y][(int)x] == '0')
-        return (true);
-    return (false);
+	if (x < 1.2 || x >= data->map_info.width - 2)
+		return (false);
+	if (y < 1.2 || y >= data->map_info.height - 2)
+		return (false);
+	if (data->map[(int)y][(int)x] == '1')
+		return (false);
+	if (data->map[(int)y][(int)x] == '0')
+		return (true);
+	return (false);
 }
 
 void	listen_for_input(t_data *data)

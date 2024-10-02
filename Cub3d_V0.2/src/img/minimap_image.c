@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap_image.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 00:57:14 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:57:14 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 /*https://en.wikipedia.org/wiki/Mini-map*/
 
 /*Important: Key function: READ*/
+// Ensure the tile does not go out of  minimap image if so we retun
+
 static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int x, int y, int color)
 {
 	int	i;
 	int	j;
-	int pixel_x;
-	int pixel_y;
+	int	pixel_x;
+	int	pixel_y;
 
-	// Ensure the tile does not go out of  minimap image if so we retun
 	if (!minimap || !minimap->img || minimap->tile_size <= 0)
-		return;
+		return ;
 	i = 0;
 	while (i < minimap->tile_size)
 	{
@@ -40,19 +53,18 @@ static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int 
 static void	draw_minimap_tile(t_minimap *minimap, int x, int y)
 {
 	if (minimap->map[y][x] == 'P')
-		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, MMAP_COLOR_PLAYER);
+		set_minimap_tile_pixels_and_gradient_effect(minimap,
+			x * minimap->tile_size, y * minimap->tile_size, MMAP_COLOR_PLAYER);
 	else if (minimap->map[y][x] == '1')
-		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, MMAP_COLOR_WALL);
+		set_minimap_tile_pixels_and_gradient_effect(minimap,
+			x * minimap->tile_size, y * minimap->tile_size, MMAP_COLOR_WALL);
 	else if (minimap->map[y][x] == '0')
-		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, MMAP_COLOR_FLOOR);
+		set_minimap_tile_pixels_and_gradient_effect(minimap,
+			x * minimap->tile_size, y * minimap->tile_size, MMAP_COLOR_FLOOR);
 	else if (minimap->map[y][x] == ' ')
-		set_minimap_tile_pixels_and_gradient_effect(minimap, x * minimap->tile_size,
-			y * minimap->tile_size, MMAP_COLOR_SPACE);
+		set_minimap_tile_pixels_and_gradient_effect(minimap,
+			x * minimap->tile_size, y * minimap->tile_size, MMAP_COLOR_SPACE);
 }
-
 
 static void	set_minimap_border_image_pixels(t_minimap *minimap, int color)
 {
@@ -74,8 +86,6 @@ static void	set_minimap_border_image_pixels(t_minimap *minimap, int color)
 		y++;
 	}
 }
-
-
 
 static void	draw_minimap(t_minimap *minimap)
 {
@@ -99,13 +109,12 @@ static void	draw_minimap(t_minimap *minimap)
 	set_minimap_border_image_pixels(minimap, MMAP_COLOR_SPACE);
 }
 
-
 void	render_minimap_image(t_data *data, t_minimap *minimap)
 {
 	int	img_size;
 
 	img_size = MMAP_PIXEL_SIZE + minimap->tile_size;
-	init_img(data, &data->minimap, img_size, img_size);//init_img_mlx
+	init_img(data, &data->minimap, img_size, img_size);
 	draw_minimap(minimap);
 	mlx_put_image_to_window(data->mlx, data->win, data->minimap.img,
 		minimap->tile_size, data->win_h

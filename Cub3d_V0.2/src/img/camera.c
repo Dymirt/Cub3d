@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:22:25 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:39:57 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:55:30 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,27 @@ static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 	set_default_ray_info(ray);
 	camera_x = calculate_camera_x(x);
 	calculate_ray_direction(ray, player, camera_x);
-	// Set the map position based on player coordinates
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
-	// Calculate delta distance for both axes
-	if (ray->dir_x != 0) // checking the division by 0 (NOTE) anything divisable by 0 = 0 So in another word non mathematicaly unvalid
+	if (ray->dir_x != 0)
 		ray->deltadist_x = fabs(1 / ray->dir_x);
 	else
-		ray->deltadist_x = DBL_MAX; // Set to a large value if dir_x is zero
+		ray->deltadist_x = DBL_MAX;
 	if (ray->dir_y != 0)
 		ray->deltadist_y = fabs(1 / ray->dir_y);
 	else
 		ray->deltadist_y = DBL_MAX;
 }
 
-// https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)
 static void	set_dda(t_ray *ray, t_player *player)
 {
 	ray->step_x = (ray->dir_x < 0) ? -1 : 1;
 	ray->step_y = (ray->dir_y < 0) ? -1 : 1;
-
-	ray->sidedist_x = (ray->dir_x < 0) ?
-		(player->pos_x - ray->map_x) * ray->deltadist_x :
+	ray->sidedist_x = (ray->dir_x < 0)
+		? (player->pos_x - ray->map_x) * ray->deltadist_x :
 		(ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
-
-	ray->sidedist_y = (ray->dir_y < 0) ?
-		(player->pos_y - ray->map_y) * ray->deltadist_y :
+	ray->sidedist_y = (ray->dir_y < 0)
+		? (player->pos_y - ray->map_y) * ray->deltadist_y :
 		(ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 }
 
@@ -66,19 +61,18 @@ static void	perform_dda(t_data *data, t_ray *ray)
 		{
 			ray->sidedist_x += ray->deltadist_x;
 			ray->map_x += ray->step_x;
-			ray->side = X_DIR;  // Using enum for clarity
-		} 
-		else 
+			ray->side = X_DIR;
+		}
+		else
 		{
 			ray->sidedist_y += ray->deltadist_y;
 			ray->map_y += ray->step_y;
-			ray->side = Y_DIR; // Using enum for clarity
+			ray->side = Y_DIR;
 		}
-		// Check map
 		if (!is_within_bounds(ray, data))
 			break ;
 		if (data->map[ray->map_y][ray->map_x] > '0')
-			hit = 1; // Wall hit
+			hit = 1;
 	}
 }
 

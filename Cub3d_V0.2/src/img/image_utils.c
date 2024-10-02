@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 00:56:42 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:56:56 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
+/*by checking the X and Y fall within the image size constrainys 
+Win_width and win_hight we making such that the coordinates are vailed 
+before accessing the pixel data
+
+and this makes  the renderening of texture smother 
+and reduce the delays whike movement*/
 void	set_image_pixel(t_img *image, int x, int y, int color)
 {
-	/*by checking the X and Y fall within the image size constrainys 
-	Win_width and win_hight we making such that the coordinates are vailed 
-	before accessing the pixel data
+	int	pixel_index;
 	
-	and this makes  the renderening of texture smother 
-	and reduce the delays whike movement*/
-    int	pixel_index;
-	if (x < 0 || y < 0 || x >= WIN_WIDTH || y >= WIN_HEIGHT)/**/
+	if (x < 0 || y < 0 || x >= WIN_WIDTH || y >= WIN_HEIGHT)
 		return;
 	pixel_index = y * (image->size_line / 4) + x;
 	image->addr[pixel_index] = color;

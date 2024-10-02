@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_TEX.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:44:35 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	check_valid_rgb(int *rgb)
@@ -77,7 +89,6 @@ int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
 		return (err_msg(data->map_info.path, "F: C: error", ERR));
 	return (SUCCESS);
 }
-
 
 int	check_textures_validity(t_data *data, t_texinfo *textures)
 {
