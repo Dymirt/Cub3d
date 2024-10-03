@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:18:36 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 01:17:50 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-# include <float.h>
+# include "float.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "struct.h"
@@ -37,10 +37,10 @@
 # define YELLOW	"\e[33m"
 
 /* init directory*/
-void 	data_init(t_data *data);
-void 	ray_init(t_ray *ray);
+void	data_init(t_data *data);
+void	ray_init(t_ray *ray);
 void	init_img_clean(t_img *img);
-void 	start_MLXTEX(t_data *data);
+void	start_mlxtex(t_data *data);
 void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_textures_img(t_data *data, t_img *image, char *path);
 void	init_texinfo(t_texinfo *textures);
@@ -49,7 +49,7 @@ void	init_texinfo(t_texinfo *textures);
 int		check_file(char *arg, bool cub);
 void	parse_data(char *path, t_data *data);
 int		get_file_data(t_data *data, char **map);
-int		fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j);
+int		fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j);
 int		create_map(t_data *data, char **map, int i);
 int		check_textures_validity(t_data *data, t_texinfo *textures);
 int		check_map_validity(t_data *data, char **map_tab);
@@ -80,7 +80,7 @@ int		rotate_player(t_data *data, double rotdir);
 /* exit directory*/
 void	clean_exit(t_data *data, int code);
 int		quit_cub3d(t_data *data);
-void	free_2Darray(void **AD);
+void	free_2d_array(void **AD);
 int		all_free(t_data *data);
 
 /* error.c */

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 00:07:01 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:08:02 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	free_2Darray(void **AD)
+void	free_2d_array(void **AD)
 {
 	size_t	i;
 
@@ -38,13 +50,13 @@ int	all_free(t_data *data)
 	if (data->map_info.fd > 0)
 		close(data->map_info.fd);
 	if (data->map_info.file)
-		free_2Darray((void **)data->map_info.file);
+		free_2d_array((void **)data->map_info.file);
 	if (data->map)
-		free_2Darray((void **)data->map);
+		free_2d_array((void **)data->map);
 	if (data->tex)
-		free_2Darray((void **)data->tex);
+		free_2d_array((void **)data->tex);
 	if (data->tex_pixels)
-		free_2Darray((void **)data->tex_pixels);
+		free_2d_array((void **)data->tex_pixels);
 	free_texinfo(&data->texinfo);
 	return (FAILURE);
 }

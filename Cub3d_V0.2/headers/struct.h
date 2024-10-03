@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:23:10 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:06:15 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,10 @@ typedef struct s_data
 	t_minimap			mp;
 }	t_data;
 
-typedef enum e_direction {
+typedef enum e_direction
+{
 	X_DIR,
 	Y_DIR
-} t_direction;
+}	t_direction;
 
 #endif
