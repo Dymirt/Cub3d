@@ -6,9 +6,10 @@
 /*   By: maabdela <dkolida@student.42warsaw.pl>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
-/*   Updated: 2024/10/02 01:54:27 by maabdela         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:24:40 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	init_player_north_south(t_player *player)

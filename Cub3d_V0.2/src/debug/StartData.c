@@ -6,10 +6,11 @@
 /*   By: maabdela <maabdela@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
-/*   Updated: 2024/10/02 01:54:27 by maabdela         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:18:24 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../headers/cub3d.h"
+
+#include "cub3d.h"
 
 static void	start_engin1(t_player *player, t_map_information *mapinfo)
 {
@@ -24,6 +25,7 @@ static void	start_engin1(t_player *player, t_map_information *mapinfo)
 	player->move_x = 0;
 	player->move_y = 0;
 	player->rotate = 0;
+	player->is_jumping = 0;
 	mapinfo->fd = 0;
 	mapinfo->line_count = 0;
 	mapinfo->height = 0;
@@ -42,7 +44,7 @@ void	init_img_clean(t_img *img)
 	img->end = 0;
 }
 
-void	r_start(t_ray *ray)
+void	ray_init(t_ray *ray)
 {
 	ray->camera_x = 0;
 	ray->dir_x = 0;
@@ -63,7 +65,7 @@ void	r_start(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-void	d_start(t_data *data)
+void	data_init(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;

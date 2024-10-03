@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:16:41 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:22:59 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	get_number_of_lines(char *path)
@@ -35,7 +47,7 @@ static void	fill_tab(int row, int column, int i, t_data *data)
 		if (!data->map_info.file[row])
 		{
 			err_msg(NULL, "Malloc: erro", 0);
-			return (free_2Darray((void **)data->map_info.file));
+			return (free_2d_array((void **)data->map_info.file));
 		}
 		while (line[i] != '\0')
 			data->map_info.file[row][column++] = line[i++];
@@ -84,10 +96,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (err_msg("Usage", ERR_USAGE, 1));
-	d_start(&data);
+	data_init(&data);
 	if (parse_args(&data, av) != 0)
 		return (1);
-	start_MLXTEX(&data);
+	start_mlxtex(&data);
 	render_images(&data);
 	listen_for_input(&data);
 	mlx_loop_hook(data.mlx, render, &data);

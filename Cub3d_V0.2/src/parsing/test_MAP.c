@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_MAP.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:25:49 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 00:49:35 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	check_map_elements(t_data *data, char **map_tab)
@@ -17,7 +29,7 @@ static int	check_map_elements(t_data *data, char **map_tab)
 			|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
 				j++;
 			if (!(ft_strchr("10NSEW", map_tab[i][j])))
-				return (err_msg(data->map_info.path, "not correct: letter", FAILURE));
+				return (err_msg(data->map_info.path, "erro: letter", FAILURE));
 			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir != '0')
 				return (err_msg(data->map_info.path, "erro: player", FAILURE));
 			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir == '0')
@@ -42,23 +54,19 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 		|| is_a_white_space(map_tab[i][j + 1]) == SUCCESS
 		|| is_a_white_space(map_tab[i - 1][j]) == SUCCESS
 		|| is_a_white_space(map_tab[i + 1][j]) == SUCCESS
-		|| map_tab[i - 1][j] == '1' // Check upward
-		|| map_tab[i + 1][j] == '1' // Check downward
-		|| map_tab[i][j - 1] == '1' // Check left
-		|| map_tab[i][j + 1] == '1') // Check right)
+		|| map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1'
+		|| map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1')
 		return (FAILURE);
 	printf("Player position: (%d, %d)\n", i, j);
-    printf("Surroundings: [%c, %c, %c, %c]\n",
-        map_tab[i - 1][j],  // Up
-        map_tab[i + 1][j],  // Down
-        map_tab[i][j - 1],  // Left
-        map_tab[i][j + 1]); // Right
-
-    if (i <= 0 || i >= (data->map_info.height - 1) || j <= 0 || j >= (int)ft_strlen(map_tab[i]) - 1)
-        return (FAILURE);
-
-    if (map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1' || map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1'){
-        return (FAILURE);}
+	printf("Surroundings: [%c, %c, %c, %c]\n",
+		map_tab[i - 1][j], map_tab[i + 1][j],
+		map_tab[i][j - 1], map_tab[i][j + 1]);
+	if (i <= 0 || i >= (data->map_info.height - 1) || j <= 0
+		|| j >= (int)ft_strlen(map_tab[i]) - 1)
+		return (FAILURE);
+	if (map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1'
+		|| map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1')
+		return (FAILURE);
 	return (SUCCESS);
 }
 

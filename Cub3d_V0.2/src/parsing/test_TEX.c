@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_TEX.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
+/*   Updated: 2024/10/03 01:17:32 by dkolida          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	check_valid_rgb(int *rgb)
@@ -24,12 +36,12 @@ static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
 		rgb[i] = ft_atoi(rgb_to_convert[i]);
 		if (rgb[i] == -1 || no_digit(rgb_to_convert[i]) == true)
 		{
-			free_2Darray((void **)rgb_to_convert);
+			free_2d_array((void **)rgb_to_convert);
 			free(rgb);
 			return (0);
 		}
 	}
-	free_2Darray((void **)rgb_to_convert);
+	free_2d_array((void **)rgb_to_convert);
 	return (rgb);
 }
 
@@ -45,7 +57,7 @@ static int	*set_rgb_colors(char *line)
 		count++;
 	if (count != 3)
 	{
-		free_2Darray((void **)rgb_to_convert);
+		free_2d_array((void **)rgb_to_convert);
 		return (0);
 	}
 	rgb = malloc(sizeof(int) * 3);
@@ -57,27 +69,26 @@ static int	*set_rgb_colors(char *line)
 	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 
-int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
+int	fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j)
 {
 	if (line[j + 1] && ft_isprint(line[j + 1]))
 		return (err_msg(data->map_info.path, "F: C: error", ERR));
-	if (!textures->ceiling && line[j] == 'C')
+	if (!tex->ceiling && line[j] == 'C')
 	{
-		textures->ceiling = set_rgb_colors(line + j + 1);
-		if (textures->ceiling == 0)
+		tex->ceiling = set_rgb_colors(line + j + 1);
+		if (tex->ceiling == 0)
 			return (err_msg(data->map_info.path, "color: C", ERR));
 	}
-	else if (!textures->floor && line[j] == 'F')
+	else if (!tex->floor && line[j] == 'F')
 	{
-		textures->floor = set_rgb_colors(line + j + 1);
-		if (textures->floor == 0)
+		tex->floor = set_rgb_colors(line + j + 1);
+		if (tex->floor == 0)
 			return (err_msg(data->map_info.path, "Color: F", ERR));
 	}
 	else
 		return (err_msg(data->map_info.path, "F: C: error", ERR));
 	return (SUCCESS);
 }
-
 
 int	check_textures_validity(t_data *data, t_texinfo *textures)
 {
