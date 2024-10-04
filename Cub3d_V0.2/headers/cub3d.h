@@ -22,8 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+//# include <X11/keysym.h>
 # include "struct.h"
 
 # define RESET	"\e[0m"

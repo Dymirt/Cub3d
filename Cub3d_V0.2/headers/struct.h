@@ -15,6 +15,23 @@
 
 /*MACROS*/
 
+//x11
+# define ClientMessage      33
+# define NoEventMask        0L
+# define KeyPress           2
+# define KeyPressMask       (1L<<0)
+# define KeyRelease         3
+# define KeyReleaseMask     (1L<<1)
+
+//x11/keys
+# define XK_Escape 0xff1b
+# define XK_Left 0xff51
+# define XK_Right 0xff53
+# define XK_w 0x0077
+# define XK_a 0x0061
+# define XK_s 0x0073
+# define XK_d 0x0064
+
 # ifndef DEBUG_MSG
 #  define DEBUG_MSG 0
 # endif
