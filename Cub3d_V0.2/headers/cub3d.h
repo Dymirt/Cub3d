@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/04 23:27:40 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 00:49:11 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	set_default_ray_info(t_ray *ray);
 double	calculate_camera_x(int x);
 void	calculate_ray_direction(t_ray *ray, t_player *player, double camera_x);
 bool	is_within_bounds(t_ray *ray, t_data *data);
-void	render_minimap_image(t_data *data, t_minimap *minimap);
 
 /* movement directory*/
 void	listen_for_input(t_data *data);
