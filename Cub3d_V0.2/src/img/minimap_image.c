@@ -16,8 +16,9 @@
 
 /*Important: Key function: READ*/
 // Ensure the tile does not go out of  minimap image if so we retun
-
-static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int x, int y, int color)
+/*
+static void	set_minimap_tile_pixels_and_gradient_effect
+(t_minimap *minimap, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -35,13 +36,54 @@ static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int 
 			pixel_x = x + j;//calc the pixel horizontaly -> on x axis
 			pixel_y = y + i;//calc the pixel verticaly -> on y axis
 
-			// Check if the pixel position is within the image boundaries before setting the pixel
+			// Check if the pixel position is within the image boundaries before
+			setting the pixel
+			if (pixel_x >= 0 && pixel_x < WIN_WIDTH && pixel_y >= 0 
+			&& pixel_y < WIN_HEIGHT)
+			{
+				//adding gradient effect based on distance from the tile center
+				 (https://en.wikipedia.org/wiki/Gradient)
+				int distance_to_center = abs((minimap->tile_size / 2) - j) + 
+				abs((minimap->tile_size / 2) - i); //each pixel (j, i) and 
+				we /2 cuz we want to give halgway point of the tile which is 
+				the center of the tile (x, y) direction
+				int modified_color = color - (distance_to_center * 100); 
+				// Darken color as it moves away from center
+				if (modified_color < 0) modified_color = 0; 
+				// Ensure color value does not go below 0
+				set_image_pixel(minimap->img, pixel_x, pixel_y, modified_color);
+			}
+			j++;
+		}
+		i++;
+	}
+}*/
+
+static void	set_minimap_tile_pixels_and_gradient_effect(t_minimap *minimap, int x, int y, int color)
+{
+	int	i;
+	int	j;
+	int	pixel_x;
+	int	pixel_y;
+	int	distance_to_center;
+	int	modified_color;
+
+	if (!minimap || !minimap->img || minimap->tile_size <= 0)
+		return ;
+	i = 0;
+	while (i < minimap->tile_size)
+	{
+		j = 0;
+		while (j < minimap->tile_size)
+		{
+			pixel_x = x + j;
+			pixel_y = y + i;
 			if (pixel_x >= 0 && pixel_x < WIN_WIDTH && pixel_y >= 0 && pixel_y < WIN_HEIGHT)
 			{
-				//adding gradient effect based on distance from the tile center (https://en.wikipedia.org/wiki/Gradient)
-				int distance_to_center = abs((minimap->tile_size / 2) - j) + abs((minimap->tile_size / 2) - i); //each pixel (j, i) and we /2 cuz we want to give halgway point of the tile which is the center of the tile (x, y) direction
-				int modified_color = color - (distance_to_center * 100); // Darken color as it moves away from center
-				if (modified_color < 0) modified_color = 0; // Ensure color value does not go below 0
+				distance_to_center = abs((minimap->tile_size / 2) - j) + abs((minimap->tile_size / 2) - i);
+				modified_color = color - (distance_to_center * 100);
+				if (modified_color < 0)
+					modified_color = 0;
 				set_image_pixel(minimap->img, pixel_x, pixel_y, modified_color);
 			}
 			j++;
