@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 01:17:50 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/04 23:06:21 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
