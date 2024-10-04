@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:22:25 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:55:30 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/04 23:21:44 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 	if (ray->dir_x != 0)
 		ray->deltadist_x = fabs(1 / ray->dir_x);
 	else
-		ray->deltadist_x = DBL_MAX;
+		ray->deltadist_x = LARGE_VALUE; 
 	if (ray->dir_y != 0)
 		ray->deltadist_y = fabs(1 / ray->dir_y);
 	else
-		ray->deltadist_y = DBL_MAX;
+		ray->deltadist_y = LARGE_VALUE;
 }
 
 static void	set_dda(t_ray *ray, t_player *player)

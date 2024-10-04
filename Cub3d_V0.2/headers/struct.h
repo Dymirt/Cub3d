@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:06:15 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/04 23:21:24 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@
 
 // ERROR MESSAGES
 # define ERR_USAGE "usage: ./cub3d [Map.cub]"
+
+//Custom macros
+# ifndef LARGE_VALUE
+#  define LARGE_VALUE 1e30
+# endif
 
 enum e_output
 {

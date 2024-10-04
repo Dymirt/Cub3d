@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/04 23:06:21 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/04 23:12:36 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-# include "float.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "struct.h"
