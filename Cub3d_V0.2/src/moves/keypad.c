@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:43:03 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 01:36:03 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	validate_move(t_data *data, double new_x, double new_y)
 		data->player.pos_y = new_y;
 		moved = 1;
 	}
-	printf("x: %f, y: %f\n", data->player.pos_x, data->player.pos_y);
-	printf(GREEN "moved: %d\n" RESET, moved);
+	//printf("x: %f, y: %f\n", data->player.pos_x, data->player.pos_y);
+	//printf(GREEN "moved: %d\n" RESET, moved);
 	return (moved);
 }

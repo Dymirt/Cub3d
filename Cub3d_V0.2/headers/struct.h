@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/04 23:21:24 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 01:59:11 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@
 # define XK_d 0x0064
 
 # ifndef DEBUG_MSG
-#  define DEBUG_MSG 0
-# endif
-
-# ifndef MMAP_DEBUG_MSG
-#  define MMAP_DEBUG_MSG 0
+#  define DEBUG_MSG 1
 # endif
 
 /* # define WIN_WIDTH 960 */
@@ -51,8 +47,8 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-# define MOVESPEED 0.0125
-# define ROTSPEED 0.015
+# define MOVESPEED 0.0512
+# define ROTSPEED 0.0512
 # define JUMP_SPEED 0.15
 # define GRAVITY -0.01
 # define MAX_JUMP_HEIGHT 0.2
