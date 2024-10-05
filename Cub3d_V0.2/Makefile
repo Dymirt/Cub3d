@@ -31,7 +31,6 @@ SRC		= 	main.c \
 			img/render.c \
 			img/texture.c \
 			img/image_utils.c \
-			img/minimap_image.c \
 			debug/StartData.c \
 			debug/StartTex.c \
 			debug/exit.c \

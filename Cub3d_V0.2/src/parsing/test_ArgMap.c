@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:27:39 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:31:47 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 00:54:53 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,12 @@ int	check_file(char *arg, bool is_cub)
 
 	fd = open(arg, O_RDONLY);
 	if (!xpm_cub_check(arg, is_cub))
-		return err_msg(arg, is_cub ? ".cub: error" : ".xpm: error", FAILURE);
+	{
+		if (is_cub)
+			return (err_msg(arg, ".cub: error", FAILURE));
+		else
+			return (err_msg(arg, ".xpm: error", FAILURE));
+	}
 	if (fd == -1)
 		return (err_msg(arg, strerror(errno), FAILURE));
 	close(fd);

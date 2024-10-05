@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:22:25 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/04 23:21:44 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 01:02:46 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 	if (ray->dir_x != 0)
 		ray->deltadist_x = fabs(1 / ray->dir_x);
 	else
-		ray->deltadist_x = LARGE_VALUE; 
+		ray->deltadist_x = LARGE_VALUE;
 	if (ray->dir_y != 0)
 		ray->deltadist_y = fabs(1 / ray->dir_y);
 	else
@@ -34,14 +34,22 @@ static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
 
 static void	set_dda(t_ray *ray, t_player *player)
 {
-	ray->step_x = (ray->dir_x < 0) ? -1 : 1;
-	ray->step_y = (ray->dir_y < 0) ? -1 : 1;
-	ray->sidedist_x = (ray->dir_x < 0)
-		? (player->pos_x - ray->map_x) * ray->deltadist_x :
-		(ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
-	ray->sidedist_y = (ray->dir_y < 0)
-		? (player->pos_y - ray->map_y) * ray->deltadist_y :
-		(ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
+	if (ray->dir_x < 0)
+		ray->step_x = -1;
+	else
+		ray->step_x = 1;
+	if (ray->dir_y < 0)
+		ray->step_y = -1;
+	else
+		ray->step_y = 1;
+	if (ray->dir_x < 0)
+		ray->sidedist_x = (player->pos_x - ray->map_x) * ray->deltadist_x;
+	else
+		ray->sidedist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
+	if (ray->dir_y < 0)
+		ray->sidedist_y = (player->pos_y - ray->map_y) * ray->deltadist_y;
+	else
+		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 }
 
 /*
