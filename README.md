@@ -1,6 +1,4 @@
 # Cub3D Project 
-## (NOTE) clone minilibx_linux first
-
 This project is a simple 3D game inspired by **Wolfenstein 3D**, created using the C language and the **minilibx** library. The game features basic 3D rendering with raycasting, textures, map parsing, and player movement.
 
 ## Known Bugs and Issues
