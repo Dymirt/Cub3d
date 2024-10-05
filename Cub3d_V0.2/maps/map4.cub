@@ -1,0 +1,15 @@
+NO textures/painting.xpm
+EA textures/painting.xpm
+SO textures/painting.xpm
+WE textures/painting.xpm
+
+C 200, 200, 0
+F 50, 50, 50
+
+111111111111
+100000000001
+10S011111101
+100010000001
+111110011101
+100000000001
+111111111111
