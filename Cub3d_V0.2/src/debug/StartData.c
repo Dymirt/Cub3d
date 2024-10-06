@@ -73,7 +73,6 @@ void	data_init(t_data *data)
 	start_engin1(&data->player, &data->map_info);
 	init_texinfo(&data->texinfo);
 	data->map = NULL;
-	//init_img_clean(&data->minimap);
 	data->tex_pixels = NULL;
 	data->tex = NULL;
 }
