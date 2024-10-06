@@ -22,7 +22,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-//# include <X11/keysym.h>
 # include "struct.h"
 
 # define RESET	"\e[0m"
@@ -77,13 +76,10 @@ int		quit_cub3d(t_data *data);
 void	free_2d_array(void **AD);
 int		all_free(t_data *data);
 
-/* error.c */
+/* debug directory*/
 int		err_msg(char *detail, char *str, int code);
 int		err_msg_val(int detail, char *str, int code);
-
-/* debug directory*/
 void	debug_display_data(t_data *data);
-void	debug_display_minimap(t_minimap *minimap);
 void	debug_display_player(t_data *data);
 void	debug_print_char_tab(char **tab);
 int		parse_args(t_data *data, char **av);

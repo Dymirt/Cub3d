@@ -14,32 +14,32 @@
 
 static int	key_press_handler(int key, t_data *data)
 {
-	if (key == XK_Escape)
+	if (key == XK_ESCAPE)
 		quit_cub3d(data);
-	if (key == XK_Left)
+	if (key == XK_LEFT)
 		data->player.rotate -= 1;
-	if (key == XK_Right)
+	if (key == XK_RIGHT)
 		data->player.rotate += 1;
-	if (key == XK_w)
+	if (key == XK_W)
 		data->player.move_y = 1;
-	if (key == XK_d)
+	if (key == XK_D)
 		data->player.move_x = -1;
-	if (key == XK_s)
+	if (key == XK_S)
 		data->player.move_y = -1;
-	if (key == XK_a)
+	if (key == XK_A)
 		data->player.move_x = 1;
 	return (0);
 }
 
 static int	key_release_handler(int key, t_data *data)
 {
-	if (key == XK_Escape)
+	if (key == XK_ESCAPE)
 		quit_cub3d(data);
-	if (key == XK_a || key == XK_d)
+	if (key == XK_A || key == XK_D)
 		data->player.move_x = 0;
-	if (key == XK_w || key == XK_s)
+	if (key == XK_W || key == XK_S)
 		data->player.move_y = 0;
-	if (key == XK_Left || key == XK_Right)
+	if (key == XK_LEFT || key == XK_RIGHT)
 		data->player.rotate = 0;
 	return (0);
 }
@@ -64,9 +64,10 @@ static bool	validate_next_move(t_data *data, double x, double y)
 
 void	listen_for_input(t_data *data)
 {
-	mlx_hook(data->win, ClientMessage, NoEventMask, quit_cub3d, data);
-	mlx_hook(data->win, KeyPress, KeyPressMask, key_press_handler, data);
-	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
+	mlx_hook(data->win, CLIENT_MESSAGE, NO_EVENT_MASK, quit_cub3d, data);
+	mlx_hook(data->win, KEY_PRESS, KEY_PRESS_MASK, key_press_handler, data);
+	mlx_hook(data->win, KEY_RELEASE,
+		KEY_RELEASE_MASK, key_release_handler, data);
 }
 
 int	validate_move(t_data *data, double new_x, double new_y)

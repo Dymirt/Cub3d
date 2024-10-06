@@ -1,0 +1,25 @@
+/* XPM */
+static char *snake[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 3 1 ",
+"  c gray10",
+". c #808040",
+"X c #99995C",
+/* pixels */
+"XX..        .XXX",
+"XX.    .   ..XXX",
+"X.    .X.   ...X",
+"..   .XXX.    .X",
+"    .XXXXX.    .",
+"  .  .XX..  .   ",
+"      ..        ",
+"                ",
+"               .",
+"      ...       ",
+"     ..X...     ",
+"  .  .XXX..  .  ",
+"    ..XXXX..   .",
+".   .XXXX..   ..",
+"..   .....    .X",
+"X..    .    ..XX"
+};

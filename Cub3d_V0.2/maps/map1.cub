@@ -1,0 +1,15 @@
+NO textures/wall.xpm
+EA textures/wall.xpm
+SO textures/wall.xpm
+WE textures/wall.xpm
+
+C 100, 150, 200
+F 50, 50, 50
+
+1111111111
+1000000011
+1000110011
+100N010011
+1010110011
+1000000011
+1111111111

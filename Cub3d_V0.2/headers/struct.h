@@ -15,22 +15,21 @@
 
 /*MACROS*/
 
-//x11
-# define ClientMessage      33
-# define NoEventMask        0L
-# define KeyPress           2
-# define KeyPressMask       (1L<<0)
-# define KeyRelease         3
-# define KeyReleaseMask     (1L<<1)
+# define CLIENT_MESSAGE      33
+# define NO_EVENT_MASK       0L
+# define KEY_PRESS           2
+# define KEY_PRESS_MASK      1L
+# define KEY_RELEASE         3
+# define KEY_RELEASE_MASK    2L
 
 //x11/keys
-# define XK_Escape 0xff1b
-# define XK_Left 0xff51
-# define XK_Right 0xff53
-# define XK_w 0x0077
-# define XK_a 0x0061
-# define XK_s 0x0073
-# define XK_d 0x0064
+# define XK_ESCAPE           0xff1b
+# define XK_LEFT             0xff51
+# define XK_RIGHT            0xff53
+# define XK_W                0x0077
+# define XK_A                0x0061
+# define XK_S                0x0073
+# define XK_D                0x0064
 
 # ifndef DEBUG_MSG
 #  define DEBUG_MSG 1
@@ -49,9 +48,6 @@
 
 # define MOVESPEED 0.0512
 # define ROTSPEED 0.0512
-# define JUMP_SPEED 0.15
-# define GRAVITY -0.01
-# define MAX_JUMP_HEIGHT 0.2
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
@@ -167,16 +163,12 @@ typedef struct s_player
 	char	dir;
 	double	pos_x;
 	double	pos_y;
-	double	pos_z;
 	double	dir_x;
 	double	dir_y;
-	double	dir_z;
 	double	plane_x;
 	double	plane_y;
-	double	plane_z;
 	int		move_x;
 	int		move_y;
-	int		move_z;
 	int		rotate;
 	int		is_jumping;
 	int		has_moved;

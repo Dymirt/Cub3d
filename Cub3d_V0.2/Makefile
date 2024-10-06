@@ -3,7 +3,7 @@ NAME	= cub3D
 
 # Compiler and compilation flags
 CC		= gcc
-CFLAGS	= -Werror -Wextra -Wall -g3 #-fsanitize=address
+CFLAGS	= -Werror -Wextra -Wall -g3
 
 # Minilibx
 MLX_PATH	= minilibx-linux/
