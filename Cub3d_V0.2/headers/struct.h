@@ -52,9 +52,6 @@
 
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
-# define JUMP_SPEED 0.15
-# define GRAVITY -0.01
-# define MAX_JUMP_HEIGHT 0.2
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
@@ -170,16 +167,12 @@ typedef struct s_player
 	char	dir;
 	double	pos_x;
 	double	pos_y;
-	double	pos_z;
 	double	dir_x;
 	double	dir_y;
-	double	dir_z;
 	double	plane_x;
 	double	plane_y;
-	double	plane_z;
 	int		move_x;
 	int		move_y;
-	int		move_z;
 	int		rotate;
 	int		is_jumping;
 	int		has_moved;

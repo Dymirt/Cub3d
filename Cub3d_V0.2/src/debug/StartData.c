@@ -25,7 +25,6 @@ static void	start_engin1(t_player *player, t_map_information *mapinfo)
 	player->move_x = 0;
 	player->move_y = 0;
 	player->rotate = 0;
-	player->is_jumping = 0;
 	mapinfo->fd = 0;
 	mapinfo->line_count = 0;
 	mapinfo->height = 0;
@@ -74,7 +73,7 @@ void	data_init(t_data *data)
 	start_engin1(&data->player, &data->map_info);
 	init_texinfo(&data->texinfo);
 	data->map = NULL;
-	init_img_clean(&data->minimap);
+	//init_img_clean(&data->minimap);
 	data->tex_pixels = NULL;
 	data->tex = NULL;
 }
