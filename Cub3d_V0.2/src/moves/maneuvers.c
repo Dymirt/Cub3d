@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maneuvers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maabdela <dkolida@student.42warsaw.pl>     +#+  +:+       +#+        */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
-/*   Updated: 2024/10/02 22:33:13 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 21:43:00 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	move_player(t_data *data)
 		new_y = data->player.pos_y - data->player.dir_x
 			* data->player.move_x * MOVESPEED;
 	}
-	moved += validate_move(data, new_x, new_y);
+	if (data->player.move_x != 0 || data->player.move_y != 0)
+		moved += validate_move(data, new_x, new_y);
 	if (data->player.rotate != 0)
 		moved += rotate_player(data, data->player.rotate);
 	return (moved);

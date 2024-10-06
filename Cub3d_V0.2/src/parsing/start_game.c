@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:25:15 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/02 23:25:38 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 22:08:03 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	fill_map_tab(t_map_information *map_info, char **map_tab, int index)
 	int		i;
 	int		j;
 
-	map_info->width = find_biggest_len(map_info, index);
+	map_info->width = find_biggest_len(map_info);
 	i = 0;
 	while (i < map_info->height)
 	{

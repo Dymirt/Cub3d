@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:27:39 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/06 21:23:45 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 22:07:01 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,19 @@ int	check_map_sides(t_map_information *map, char **map_tab)
 	return (SUCCESS);
 }
 
-size_t	find_biggest_len(t_map_information *map, int i)
+size_t	find_biggest_len(t_map_information *map)
 {
 	size_t	biggest_len;
+	size_t	i;
+	size_t	len;
 
-	biggest_len = ft_strlen(map->file[i]);
+	i = 0;
+	biggest_len = 0;
 	while (map->file[i])
 	{
-		if (ft_strlen(map->file[i]) > biggest_len)
-			biggest_len = ft_strlen(map->file[i]);
+		len = ft_strlen(map->file[i]);
+		if (len > biggest_len)
+			biggest_len = len;
 		i++;
 	}
 	return (biggest_len);
