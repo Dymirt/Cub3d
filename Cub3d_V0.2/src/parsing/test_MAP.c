@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:25:49 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:49:35 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/05 02:10:53 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,7 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 	i = (int)data->player.pos_y;
 	j = (int)data->player.pos_x;
 	if (ft_strlen(map_tab[i - 1]) < (size_t)j
-		|| ft_strlen(map_tab[i + 1]) < (size_t)j
-		|| is_a_white_space(map_tab[i][j - 1]) == SUCCESS
-		|| is_a_white_space(map_tab[i][j + 1]) == SUCCESS
-		|| is_a_white_space(map_tab[i - 1][j]) == SUCCESS
-		|| is_a_white_space(map_tab[i + 1][j]) == SUCCESS
-		|| map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1'
-		|| map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1')
+		|| ft_strlen(map_tab[i + 1]) < (size_t)j)
 		return (FAILURE);
 	printf("Player position: (%d, %d)\n", i, j);
 	printf("Surroundings: [%c, %c, %c, %c]\n",
@@ -63,9 +57,6 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 		map_tab[i][j - 1], map_tab[i][j + 1]);
 	if (i <= 0 || i >= (data->map_info.height - 1) || j <= 0
 		|| j >= (int)ft_strlen(map_tab[i]) - 1)
-		return (FAILURE);
-	if (map_tab[i - 1][j] == '1' || map_tab[i + 1][j] == '1'
-		|| map_tab[i][j - 1] == '1' || map_tab[i][j + 1] == '1')
 		return (FAILURE);
 	return (SUCCESS);
 }

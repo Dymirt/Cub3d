@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:16:41 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:22:59 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 21:34:34 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ static int	get_number_of_lines(char *path)
 	return (line_count);
 }
 
-static void	fill_tab(int row, int column, int i, t_data *data)
+static void	fill_tab(t_data *data)
 {
 	char	*line;
+	int		row;
 
+	row = 0;
 	line = get_next_line(data->map_info.fd);
 	while (line != NULL)
 	{
@@ -49,11 +51,7 @@ static void	fill_tab(int row, int column, int i, t_data *data)
 			err_msg(NULL, "Malloc: erro", 0);
 			return (free_2d_array((void **)data->map_info.file));
 		}
-		while (line[i] != '\0')
-			data->map_info.file[row][column++] = line[i++];
-		data->map_info.file[row++][column] = '\0';
-		column = 0;
-		i = 0;
+		ft_strlcpy(data->map_info.file[row++], line, ft_strlen(line) + 1);
 		free(line);
 		line = get_next_line(data->map_info.fd);
 	}
@@ -62,13 +60,6 @@ static void	fill_tab(int row, int column, int i, t_data *data)
 
 void	parse_data(char *path, t_data *data)
 {
-	int		row;
-	int		i;
-	size_t	column;
-
-	i = 0;
-	row = 0;
-	column = 0;
 	data->map_info.line_count = get_number_of_lines(path);
 	data->map_info.path = path;
 	data->map_info.file = ft_calloc(data->map_info.line_count \
@@ -83,7 +74,7 @@ void	parse_data(char *path, t_data *data)
 		err_msg(path, strerror(errno), FAILURE);
 	else
 	{
-		fill_tab(row, column, i, data);
+		fill_tab(data);
 		close(data->map_info.fd);
 	}
 }

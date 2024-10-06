@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 00:49:11 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 22:08:27 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		check_textures_validity(t_data *data, t_texinfo *textures);
 int		check_map_validity(t_data *data, char **map_tab);
 int		check_map_sides(t_map_information *map, char **map_tab);
 int		is_a_white_space(char c);
-size_t	find_biggest_len(t_map_information *map, int i);
+size_t	find_biggest_len(t_map_information *map);
 
 /* render directory*/
 int		render(t_data *data);

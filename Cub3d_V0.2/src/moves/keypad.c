@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:43:03 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 22:17:32 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,20 @@ static int	key_release_handler(int key, t_data *data)
 
 static bool	validate_next_move(t_data *data, double x, double y)
 {
-	if (x < 1.2 || x >= data->map_info.width - 2)
+	double	threshold;
+
+	threshold = 0.1;
+	if (data->map[(int)(y + threshold)][(int)(x + threshold)] == '1' ||
+		data->map[(int)(y + threshold)][(int)(x - threshold)] == '1' ||
+		data->map[(int)(y - threshold)][(int)(x + threshold)] == '1' ||
+		data->map[(int)(y - threshold)][(int)(x - threshold)] == '1' ||
+		data->map[(int)(y + threshold)][(int)x] == '1' ||
+		data->map[(int)(y - threshold)][(int)x] == '1' ||
+		data->map[(int)y][(int)(x + threshold)] == '1' ||
+		data->map[(int)y][(int)(x - threshold)] == '1')
 		return (false);
-	if (y < 1.2 || y >= data->map_info.height - 2)
-		return (false);
-	if (data->map[(int)y][(int)x] == '1')
-		return (false);
-	if (data->map[(int)y][(int)x] == '0')
+	else
 		return (true);
-	return (false);
 }
 
 void	listen_for_input(t_data *data)
@@ -70,7 +75,7 @@ int	validate_move(t_data *data, double new_x, double new_y)
 	int	moved;
 
 	moved = 0;
-	if (validate_next_move(data, new_x, data->player.pos_y))
+	if (validate_next_move(data, new_x, new_y))
 	{
 		data->player.pos_x = new_x;
 		moved = 1;
@@ -80,7 +85,5 @@ int	validate_move(t_data *data, double new_x, double new_y)
 		data->player.pos_y = new_y;
 		moved = 1;
 	}
-	printf("x: %f, y: %f\n", data->player.pos_x, data->player.pos_y);
-	printf(GREEN "moved: %d\n" RESET, moved);
 	return (moved);
 }
