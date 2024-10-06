@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:27:39 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 00:54:53 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/06 21:23:45 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ static bool	xpm_cub_check(char *arg, bool is_cub)
 		close (fd);
 		return (false);
 	}
-	if (is_cub && (len > 4 && arg[len - 4] == '.' && arg[len - 3] == 'c'
-			&& arg[len - 2] == 'u' && arg[len - 1] == 'b'))
+	if (is_cub && len > 4 && ft_strncmp(&arg[len - 4], ".cub", 4) == 0)
 		return (true);
-	if (!is_cub && (len > 4 && arg[len - 4] == '.' && arg[len - 3] == 'x'
-			&& arg[len - 2] == 'p' && arg[len - 1] == 'm'))
+	if (!is_cub && len > 4 && ft_strncmp(&arg[len - 4], ".xpm", 4) == 0)
 		return (true);
 	return (false);
 }
