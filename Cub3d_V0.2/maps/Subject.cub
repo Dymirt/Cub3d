@@ -1,7 +1,7 @@
 NO textures/wall.xpm
-EA textures/wall.xpm
-SO textures/wall.xpm
-WE textures/wall.xpm
+EA textures/lavafull.xpm
+SO textures/painting.xpm
+WE textures/snake.xpm
 F 220,100,0
 C 225,30,0
         1111111111111111111111111
