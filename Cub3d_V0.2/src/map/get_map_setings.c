@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 21:04:52 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 01:21:32 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:37:47 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	load_map_settings(t_data *data)
 		arr = ft_split(data->map_info.file[i], ' ');
 		if (!set_textures(data, arr[0], arr[1]))
 			return (0);
-		set_up_down_clours(data, arr[0], data->map_info.file[i]);
+		if (!set_up_down_clours(data, arr[0], data->map_info.file[i]))
+			return (0);
 		free_2d_array((void **)arr);
 		i++;
 	}

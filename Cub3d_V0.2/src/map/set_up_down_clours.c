@@ -6,24 +6,32 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:23:51 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 00:30:30 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:42:39 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	*set_rgb_colors(char *line);
 static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb);
 
-void	set_up_down_clours(t_data *data, char *key, char *value)
+int	set_up_down_clours(t_data *data, char *key, char *value)
 {
 	if (ft_strncmp(key, "F", 1) == 0)
+	{
+		if (data->texinfo.floor)
+			return (0);
 		data->texinfo.floor = set_rgb_colors(ft_strchr(value, 'F') + 1);
+	}
 	else if (ft_strncmp(key, "C", 1) == 0)
+	{
+		if (data->texinfo.ceiling)
+			return (0);
 		data->texinfo.ceiling = set_rgb_colors(ft_strchr(value, 'C') + 1);
+	}
+	return (1);
 }
 
-static int	*set_rgb_colors(char *line)
+int	*set_rgb_colors(char *line)
 {
 	char	**rgb_to_convert;
 	int		*rgb;

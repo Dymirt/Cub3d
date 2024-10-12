@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 20:41:06 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:43:10 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,49 +24,6 @@ static int	check_valid_rgb(int *rgb)
 		i++;
 	}
 	return (SUCCESS);
-}
-
-static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
-{
-	int		i;
-
-	i = -1;
-	while (rgb_to_convert[++i])
-	{
-		rgb[i] = ft_atoi(rgb_to_convert[i]);
-		if (rgb[i] == -1 || no_digit(rgb_to_convert[i]) == true)
-		{
-			free_2d_array((void **)rgb_to_convert);
-			free(rgb);
-			return (0);
-		}
-	}
-	free_2d_array((void **)rgb_to_convert);
-	return (rgb);
-}
-
-static int	*set_rgb_colors(char *line)
-{
-	char	**rgb_to_convert;
-	int		*rgb;
-	int		count;
-
-	rgb_to_convert = ft_split(line, ',');
-	count = 0;
-	while (rgb_to_convert[count])
-		count++;
-	if (count != 3)
-	{
-		free_2d_array((void **)rgb_to_convert);
-		return (0);
-	}
-	rgb = malloc(sizeof(int) * 3);
-	if (!rgb)
-	{
-		err_msg(NULL, "Malloc: error", 0);
-		return (0);
-	}
-	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 
 int	fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j)
