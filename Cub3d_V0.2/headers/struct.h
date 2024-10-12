@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 01:59:11 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:55:21 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@
 //Custom macros
 # ifndef LARGE_VALUE
 #  define LARGE_VALUE 1e30
+# endif
+
+# ifndef MAX_LINES
+#  define MAX_LINES 1000
 # endif
 
 enum e_output
@@ -126,8 +130,6 @@ typedef struct s_minimap
 
 typedef struct s_map_information
 {
-	int		fd;
-	int		line_count;
 	int		height;
 	int		width;
 	int		i_end_of_map;

@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:07:01 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:08:02 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:56:07 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static void	free_texinfo(t_texinfo *textures)
 
 int	all_free(t_data *data)
 {
-	if (data->map_info.fd > 0)
-		close(data->map_info.fd);
 	if (data->map_info.file)
 		free_2d_array((void **)data->map_info.file);
 	if (data->map)
