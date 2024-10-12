@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:25:49 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 02:10:53 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 00:47:44 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,28 +89,6 @@ static int	check_player_position(t_data *data, char **map_tab)
 	return (SUCCESS);
 }
 
-static int	check_map_is_at_the_end(t_map_information *map)
-{
-	int	i;
-	int	j;
-
-	i = map->i_end_of_map;
-	while (map->file[i])
-	{
-		j = 0;
-		while (map->file[i][j])
-		{
-			if (map->file[i][j] != ' ' && map->file[i][j] != '\t'
-				&& map->file[i][j] != '\r' && map->file[i][j] != '\n'
-				&& map->file[i][j] != '\v' && map->file[i][j] != '\f')
-				return (FAILURE);
-			j++;
-		}
-		i++;
-	}
-	return (SUCCESS);
-}
-
 int	check_map_validity(t_data *data, char **map_tab)
 {
 	if (!data->map)
@@ -123,7 +101,5 @@ int	check_map_validity(t_data *data, char **map_tab)
 		return (FAILURE);
 	if (check_player_position(data, map_tab) == FAILURE)
 		return (FAILURE);
-	if (check_map_is_at_the_end(&data->map_info) == FAILURE)
-		return (err_msg(data->map_info.path, "error: map: ", FAILURE));
 	return (SUCCESS);
 }

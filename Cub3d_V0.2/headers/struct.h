@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 20:44:46 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 21:15:10 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,6 @@ typedef struct s_data
 	t_ray				ray;
 	t_texinfo			texinfo;
 	t_img				minimap;
-	t_minimap			mp;
 }	t_data;
 
 typedef enum e_direction

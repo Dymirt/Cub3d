@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:12:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 19:33:20 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 00:49:14 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	err_msg_val(int detail, char *str, int code)
 
 int	parse_args(t_data *data)
 {
-	if (get_file_data(data, data->map_info.file) == FAILURE)
+	if (!load_map_settings(data))
 		return (all_free(data));
 	if (check_map_validity(data, data->map) == FAILURE)
 		return (all_free(data));
