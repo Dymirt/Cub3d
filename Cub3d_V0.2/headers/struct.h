@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 19:55:21 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 20:44:46 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,17 +116,6 @@ typedef struct s_texinfo
 	double			step;
 	double			position;
 }	t_texinfo;
-
-typedef struct s_minimap
-{
-	char	**map;
-	t_img	*img;
-	int		size;
-	int		offset_x;
-	int		offset_y;
-	int		view_dist;
-	int		tile_size;
-}	t_minimap;
 
 typedef struct s_map_information
 {

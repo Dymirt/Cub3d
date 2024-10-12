@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:27:39 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/06 22:07:01 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 20:41:16 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,6 @@ static int	check_top_or_bottom(char **map_tab, int i, int j)
 			return (FAILURE);
 		j++;
 	}
-	return (SUCCESS);
-}
-
-static bool	xpm_cub_check(char *arg, bool is_cub)
-{
-	size_t	len;
-	int		fd;
-
-	len = ft_strlen(arg);
-	fd = open(arg, O_DIRECTORY);
-	if (fd >= 0)
-	{
-		close (fd);
-		return (false);
-	}
-	if (is_cub && len > 4 && ft_strncmp(&arg[len - 4], ".cub", 4) == 0)
-		return (true);
-	if (!is_cub && len > 4 && ft_strncmp(&arg[len - 4], ".xpm", 4) == 0)
-		return (true);
-	return (false);
-}
-
-int	check_file(char *arg, bool is_cub)
-{
-	int	fd;
-
-	fd = open(arg, O_RDONLY);
-	if (!xpm_cub_check(arg, is_cub))
-	{
-		if (is_cub)
-			return (err_msg(arg, ".cub: error", FAILURE));
-		else
-			return (err_msg(arg, ".xpm: error", FAILURE));
-	}
-	if (fd == -1)
-		return (err_msg(arg, strerror(errno), FAILURE));
-	close(fd);
 	return (SUCCESS);
 }
 

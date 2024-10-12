@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 17:31:43 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 19:46:57 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 20:39:48 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	read_map(t_data *data, char *path)
 {
 	int	fd;
 
-	if (!is_extension(path, ".cub"))
-		return (err_msg(path, "Invalid file extension", 0));
-	if (is_directory(path))
-		return (err_msg(path, "Is a directory", 0));
+	if (!is_file_ext(path, ".cub"))
+		return (0);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (err_msg(path, strerror(errno), 0));

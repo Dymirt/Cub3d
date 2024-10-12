@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 19:59:22 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 20:34:57 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_textures_img(t_data *data, t_img *image, char *path);
 void	init_texinfo(t_texinfo *textures);
 
 /* parsing directory*/
-int		check_file(char *arg, bool cub);
+
 int		get_file_data(t_data *data, char **map);
 int		fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j);
 int		create_map(t_data *data, char **map, int i);
@@ -86,7 +86,6 @@ int		parse_args(t_data *data);
 int		read_map(t_data *data, char *path);
 
 //Helpers functions
-int		is_extension(char *path, char *ext);
-int		is_directory(char *path);
+int		is_file_ext(char *arg, char *ext);
 
 #endif

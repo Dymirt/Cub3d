@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 01:17:32 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/12 20:41:06 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int	check_textures_validity(t_data *data, t_texinfo *textures)
 		return (err_msg(data->map_info.path, "tex: error", FAILURE));
 	if (!textures->floor || !textures->ceiling)
 		return (err_msg(data->map_info.path, "color missing: error", FAILURE));
-	if (check_file(textures->north, false) == FAILURE
-		|| check_file(textures->south, false) == FAILURE
-		|| check_file(textures->west, false) == FAILURE
-		|| check_file(textures->east, false) == FAILURE
+	if (!is_file_ext(textures->north, ".xpm")
+		|| !is_file_ext(textures->south, ".xpm")
+		|| !is_file_ext(textures->west, ".xpm")
+		|| !is_file_ext(textures->east, ".xpm")
 		|| check_valid_rgb(textures->floor) == FAILURE
 		|| check_valid_rgb(textures->ceiling) == FAILURE)
 		return (FAILURE);
