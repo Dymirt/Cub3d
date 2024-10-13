@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:12:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 00:49:14 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:57:35 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	parse_args(t_data *data)
 		return (all_free(data));
 	if (check_map_validity(data, data->map) == FAILURE)
 		return (all_free(data));
-	if (check_textures_validity(data, &data->texinfo) == FAILURE)
+	if (check_textures_validity(&data->texinfo) == FAILURE)
 		return (all_free(data));
 	init_player_direction(data);
 	if (DEBUG_MSG)
