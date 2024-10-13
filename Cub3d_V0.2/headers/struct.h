@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 01:51:32 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 02:12:22 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ typedef struct s_map_information
 {
 	int		height;
 	int		width;
-	t_img	*img;
 	char	**file;
 
 }	t_map_information;
