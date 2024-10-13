@@ -18,6 +18,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 	int		x;
 	int		y;
 
+	data->texinfo.size = 0;
 	init_textures_img(data, &tmp, path);
 	buff = ft_calloc(1, sizeof(int) * data->texinfo.size * data->texinfo.size);
 	if (!buff)
@@ -50,9 +51,13 @@ void	start_mlxtex(t_data *data)
 	if (!data->tex)
 		clean_exit(data, err_msg(NULL, "Malloc: erro", 1));
 	data->tex[NORTH] = xpm_to_img(data, data->texinfo.north);
+	data->texinfo.sizes[NORTH] = data->texinfo.size;
 	data->tex[SOUTH] = xpm_to_img(data, data->texinfo.south);
+	data->texinfo.sizes[SOUTH] = data->texinfo.size;
 	data->tex[EAST] = xpm_to_img(data, data->texinfo.east);
+	data->texinfo.sizes[EAST] = data->texinfo.size;
 	data->tex[WEST] = xpm_to_img(data, data->texinfo.west);
+	data->texinfo.sizes[WEST] = data->texinfo.size;
 	return ;
 }
 
@@ -66,7 +71,7 @@ void	init_texinfo(t_texinfo *textures)
 	textures->ceiling = 0;
 	textures->x = 0;
 	textures->y = 0;
-	textures->size = 0.0;
+	textures->size = 0;
 	textures->hex_floor = 0x0;
 	textures->hex_ceiling = 0x0;
 	textures->step = 0.0;

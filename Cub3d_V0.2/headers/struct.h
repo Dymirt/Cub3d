@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: dkolida <dkolida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 02:14:27 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 16:56:05 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-# define MOVESPEED 0.0512
-# define ROTSPEED 0.0512
+# define MOVESPEED 0.0256
+# define ROTSPEED 0.0256
 
 # define DIST_EDGE_MOUSE_WRAP 20
 
@@ -115,6 +115,7 @@ typedef struct s_texinfo
 	unsigned long	hex_ceiling;
 	double			step;
 	double			position;
+	int				sizes[4];
 }	t_texinfo;
 
 typedef struct s_map_information

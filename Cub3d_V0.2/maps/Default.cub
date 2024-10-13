@@ -1,7 +1,7 @@
-NO textures/wall.xpm
+NO textures/lavafull.xpm
 EA textures/wall.xpm
-SO textures/wall.xpm
-WE textures/wall.xpm
+SO textures/lavafull.xpm
+WE textures/lavafull.xpm
 
 C 148, 0, 128
 F 0, 0, 0
