@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 02:12:22 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 02:14:27 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ typedef struct s_player
 	int		move_x;
 	int		move_y;
 	int		rotate;
-	int		is_jumping;
 	int		has_moved;
 }	t_player;
 
