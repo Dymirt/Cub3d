@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:44:24 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 01:57:05 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 02:07:17 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	check_valid_rgb(int *rgb)
 	}
 	return (SUCCESS);
 }
-
 
 int	check_textures_validity(t_texinfo *textures)
 {
