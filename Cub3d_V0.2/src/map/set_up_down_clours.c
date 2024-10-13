@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:23:51 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 13:15:21 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 13:20:15 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ int	*set_rgb_colors(char *line)
 	}
 	rgb = malloc(sizeof(int) * 3);
 	if (!rgb)
-	{
-		err_msg(NULL, "Malloc: error", 0);
-		return (0);
-	}
+		return (err_msg(NULL, "Malloc: error", 0));
 	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 

@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:27:39 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 01:39:50 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 13:22:22 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_map_sides(t_map_information *map, char **map_tab)
 	int	j;
 
 	if (check_top_or_bottom(map_tab, 0, 0) == FAILURE)
-		return (FAILURE);
+		return (err_msg(NULL, "erro: top", FAILURE));
 	i = 1;
 	while (i < (map->height - 1))
 	{
@@ -45,6 +45,6 @@ int	check_map_sides(t_map_information *map, char **map_tab)
 		i++;
 	}
 	if (check_top_or_bottom(map_tab, i, 0) == FAILURE)
-		return (FAILURE);
+		return (err_msg(NULL, "erro: bottom", FAILURE));
 	return (SUCCESS);
 }
