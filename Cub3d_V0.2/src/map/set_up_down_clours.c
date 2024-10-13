@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:23:51 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/13 01:42:39 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 13:15:21 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	set_up_down_clours(t_data *data, char *key, char *value)
 	if (ft_strncmp(key, "F", 1) == 0)
 	{
 		if (data->texinfo.floor)
-			return (0);
+			return (err_msg(NULL, "Floor color already set", 0));
 		data->texinfo.floor = set_rgb_colors(ft_strchr(value, 'F') + 1);
 	}
 	else if (ft_strncmp(key, "C", 1) == 0)
 	{
 		if (data->texinfo.ceiling)
-			return (0);
+			return (err_msg(NULL, "Ceiling color already set", 0));
 		data->texinfo.ceiling = set_rgb_colors(ft_strchr(value, 'C') + 1);
 	}
 	return (1);
