@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 17:31:43 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/12 20:39:48 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 13:18:28 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	read_map(t_data *data, char *path)
 	if (!read_file(&data->map_info.file, fd))
 		return (err_msg(path, "Empty file", 0));
 	close(fd);
-	print_map(data->map_info.file);
 	return (1);
 }
 
@@ -58,13 +57,4 @@ int	read_file(char ***file, int fd)
 	}
 	file[row] = NULL;
 	return (1);
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		ft_putstr_fd(map[i++], 1);
 }
