@@ -1,7 +1,10 @@
 NO textures/wall.xpm
 EA textures/lavafull.xpm
-SO textures/test.xpm
+
+SO textures/wall.xpm
+
 WE textures/snake.xpm
+
 
 
 F 225,0,0

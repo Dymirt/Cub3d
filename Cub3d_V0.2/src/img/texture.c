@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: dkolida <dkolida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:20:17 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:09:45 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 16:58:04 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	init_texture_pixels(t_data *data)
 
 static void	get_texture_index(t_data *data, t_ray *ray)
 {
+	printf("ray->side: %d\n", ray->side);
+	printf("ray->dir_x: %f\n", ray->dir_x);
+	printf("ray->dir_y: %f\n", ray->dir_y);
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
@@ -57,6 +60,7 @@ void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 	int			color;
 
 	get_texture_index(data, ray);
+	tex->size = data->texinfo.sizes[tex->i];
 	tex->x = (int)(ray->wall_x * tex->size);
 	if ((ray->side == 0 && ray->dir_x < 0)
 		|| (ray->side == 1 && ray->dir_y > 0))
