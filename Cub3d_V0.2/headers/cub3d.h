@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:41:21 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/06 22:08:27 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:57:42 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,11 @@ void	init_textures_img(t_data *data, t_img *image, char *path);
 void	init_texinfo(t_texinfo *textures);
 
 /* parsing directory*/
-int		check_file(char *arg, bool cub);
-void	parse_data(char *path, t_data *data);
-int		get_file_data(t_data *data, char **map);
-int		fill_color_tex(t_data *data, t_texinfo *tex, char *line, int j);
-int		create_map(t_data *data, char **map, int i);
-int		check_textures_validity(t_data *data, t_texinfo *textures);
+
+int		check_textures_validity(t_texinfo *textures);
 int		check_map_validity(t_data *data, char **map_tab);
 int		check_map_sides(t_map_information *map, char **map_tab);
 int		is_a_white_space(char c);
-size_t	find_biggest_len(t_map_information *map);
 
 /* render directory*/
 int		render(t_data *data);
@@ -82,6 +77,14 @@ int		err_msg_val(int detail, char *str, int code);
 void	debug_display_data(t_data *data);
 void	debug_display_player(t_data *data);
 void	debug_print_char_tab(char **tab);
-int		parse_args(t_data *data, char **av);
+int		parse_args(t_data *data);
+
+int		read_map(t_data *data, char *path);
+int		load_map_settings(t_data *data);
+int		set_up_down_clours(t_data *data, char *key, char *value);
+
+//Helpers functions
+int		is_file_ext(char *arg, char *ext);
+int		*set_rgb_colors(char *line);
 
 #endif

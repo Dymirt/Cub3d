@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:12:10 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/03 00:12:20 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:57:35 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,13 @@ int	err_msg_val(int detail, char *str, int code)
 	return (code);
 }
 
-int	parse_args(t_data *data, char **av)
+int	parse_args(t_data *data)
 {
-	if (check_file(av[1], true) == FAILURE)
-		clean_exit(data, FAILURE);
-	parse_data(av[1], data);
-	if (get_file_data(data, data->map_info.file) == FAILURE)
+	if (!load_map_settings(data))
 		return (all_free(data));
 	if (check_map_validity(data, data->map) == FAILURE)
 		return (all_free(data));
-	if (check_textures_validity(data, &data->texinfo) == FAILURE)
+	if (check_textures_validity(&data->texinfo) == FAILURE)
 		return (all_free(data));
 	init_player_direction(data);
 	if (DEBUG_MSG)

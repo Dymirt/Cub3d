@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 23:45:05 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 01:59:11 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 02:14:27 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@
 #  define LARGE_VALUE 1e30
 # endif
 
+# ifndef MAX_LINES
+#  define MAX_LINES 1000
+# endif
+
 enum e_output
 {
 	SUCCESS = 0,
@@ -113,26 +117,10 @@ typedef struct s_texinfo
 	double			position;
 }	t_texinfo;
 
-typedef struct s_minimap
-{
-	char	**map;
-	t_img	*img;
-	int		size;
-	int		offset_x;
-	int		offset_y;
-	int		view_dist;
-	int		tile_size;
-}	t_minimap;
-
 typedef struct s_map_information
 {
-	int		fd;
-	int		line_count;
 	int		height;
 	int		width;
-	int		i_end_of_map;
-	t_img	*img;
-	char	*path;
 	char	**file;
 
 }	t_map_information;
@@ -170,7 +158,6 @@ typedef struct s_player
 	int		move_x;
 	int		move_y;
 	int		rotate;
-	int		is_jumping;
 	int		has_moved;
 }	t_player;
 
@@ -188,7 +175,6 @@ typedef struct s_data
 	t_ray				ray;
 	t_texinfo			texinfo;
 	t_img				minimap;
-	t_minimap			mp;
 }	t_data;
 
 typedef enum e_direction

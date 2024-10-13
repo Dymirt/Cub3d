@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   StartData.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maabdela <maabdela@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:53:10 by maabdela          #+#    #+#             */
-/*   Updated: 2024/10/02 23:18:24 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:52:50 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ static void	start_engin1(t_player *player, t_map_information *mapinfo)
 	player->move_x = 0;
 	player->move_y = 0;
 	player->rotate = 0;
-	mapinfo->fd = 0;
-	mapinfo->line_count = 0;
 	mapinfo->height = 0;
 	mapinfo->width = 0;
-	mapinfo->i_end_of_map = 0;
-	mapinfo->path = NULL;
 	mapinfo->file = NULL;
 }
 

@@ -18,51 +18,27 @@ LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
 # Sources
 SRC_PATH = ./src/
-SRC		= 	main.c \
-			parsing/start_game.c \
-			parsing/test_Data.c \
-			parsing/test_TEX.c \
-			parsing/test_ArgMap.c \
-			parsing/test_MAP.c \
-			moves/keypad.c \
-			moves/dist_player.c \
-			moves/maneuvers.c \
-			img/camera.c \
-			img/render.c \
-			img/texture.c \
-			img/image_utils.c \
-			debug/StartData.c \
-			debug/StartTex.c \
-			debug/exit.c \
-			debug/free_data.c \
-			debug/debug.c
-
-SRCS	= $(addprefix $(SRC_PATH), $(SRC))
+SRC		= $(shell find $(SRC_PATH) -type f -name '*.c')
 
 # Objects
-OBJ_PATH	= ./objects/
-OBJ			= $(SRC:.c=.o)
-OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+OBJ_PATH	= objects/
+OBJS		=	$(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
 
 # Includes
 INC			=	-I ./headers/ \
 				-I ./libft/ \
 				-I ./minilibx-linux/
 
-
 # Main rule
 all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
 
-# Objects directory rule
+# Create objects directory
 $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
-	@mkdir -p $(OBJ_PATH)/parsing
-	@mkdir -p $(OBJ_PATH)/moves
-	@mkdir -p $(OBJ_PATH)/img
-	@mkdir -p $(OBJ_PATH)/debug
 
 # Objects rule
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 # Project file rule

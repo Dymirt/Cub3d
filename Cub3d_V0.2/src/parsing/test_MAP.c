@@ -6,7 +6,7 @@
 /*   By: dkolida <dkolida@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:25:49 by dkolida           #+#    #+#             */
-/*   Updated: 2024/10/05 02:10:53 by dkolida          ###   ########.fr       */
+/*   Updated: 2024/10/13 01:59:00 by dkolida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	check_map_elements(t_data *data, char **map_tab)
 			|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
 				j++;
 			if (!(ft_strchr("10NSEW", map_tab[i][j])))
-				return (err_msg(data->map_info.path, "erro: letter", FAILURE));
+				return (err_msg(NULL, "erro: letter", FAILURE));
 			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir != '0')
-				return (err_msg(data->map_info.path, "erro: player", FAILURE));
+				return (err_msg(NULL, "erro: player", FAILURE));
 			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir == '0')
 				data->player.dir = map_tab[i][j];
 			j++;
@@ -67,7 +67,7 @@ static int	check_player_position(t_data *data, char **map_tab)
 	int	j;
 
 	if (data->player.dir == '0')
-		return (err_msg(data->map_info.path, "player: direction", FAILURE));
+		return (err_msg(NULL, "player: direction", FAILURE));
 	i = 0;
 	while (map_tab[i])
 	{
@@ -85,45 +85,21 @@ static int	check_player_position(t_data *data, char **map_tab)
 		i++;
 	}
 	if (check_position_is_valid(data, map_tab) == FAILURE)
-		return (err_msg(data->map_info.path, "player position", FAILURE));
-	return (SUCCESS);
-}
-
-static int	check_map_is_at_the_end(t_map_information *map)
-{
-	int	i;
-	int	j;
-
-	i = map->i_end_of_map;
-	while (map->file[i])
-	{
-		j = 0;
-		while (map->file[i][j])
-		{
-			if (map->file[i][j] != ' ' && map->file[i][j] != '\t'
-				&& map->file[i][j] != '\r' && map->file[i][j] != '\n'
-				&& map->file[i][j] != '\v' && map->file[i][j] != '\f')
-				return (FAILURE);
-			j++;
-		}
-		i++;
-	}
+		return (err_msg(NULL, "player position", FAILURE));
 	return (SUCCESS);
 }
 
 int	check_map_validity(t_data *data, char **map_tab)
 {
 	if (!data->map)
-		return (err_msg(data->map_info.path, "map: error", FAILURE));
+		return (err_msg(NULL, "map: error", FAILURE));
 	if (check_map_sides(&data->map_info, map_tab) == FAILURE)
-		return (err_msg(data->map_info.path, "map: without wall", FAILURE));
+		return (err_msg(NULL, "map: without wall", FAILURE));
 	if (data->map_info.height < 3)
-		return (err_msg(data->map_info.path, "map is to small", FAILURE));
+		return (err_msg(NULL, "map is to small", FAILURE));
 	if (check_map_elements(data, map_tab) == FAILURE)
 		return (FAILURE);
 	if (check_player_position(data, map_tab) == FAILURE)
 		return (FAILURE);
-	if (check_map_is_at_the_end(&data->map_info) == FAILURE)
-		return (err_msg(data->map_info.path, "error: map: ", FAILURE));
 	return (SUCCESS);
 }
